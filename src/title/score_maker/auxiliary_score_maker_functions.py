@@ -246,31 +246,35 @@ def add_instrument_names(instrument_properties: List[namedtuple]) -> None:
         None
     """
     for instrument in instrument_properties:
-        # for better spacing, adding whitespace to end of instrument names
-        instrument_name = instrument.instrument_name
-        if instrument_name[-1] != ' ':
-            instrument_name + ' '
-        short_instrument_name = instrument.short_instrument_name
-        if short_instrument_name[-1] != ' ':
-            short_instrument_name + ' '
+        if instrument.instrument_name is not None:
+            # for better spacing, adding whitespace to end of instrument name
+            instrument_name = instrument.instrument_name
+            if instrument_name[-1] != ' ':
+                instrument_name + ' '
+            # creating markup
+            instrument_name_markup = abjad.StartMarkup(
+                context=instrument.context,
+                markup=abjad.Markup(instrument_name),
+            )
+            # attaching markup
+            abjad.attach(instrument_name_markup,
+                        abjad.select(instrument.container).leaf(0),
+                        )
         
-        # creating markups
-        instrument_name_markup = abjad.StartMarkup(
-            context=instrument.context,
-            markup=abjad.Markup(instrument_name),
-        )
-        short_instrument_name_markup = abjad.MarginMarkup(
-            context=instrument.context,
-            markup=abjad.Markup(short_instrument_name),
-        )
-
-        # attaching markups
-        abjad.attach(instrument_name_markup,
-                     abjad.select(instrument.container).leaf(0),
-                     )
-        abjad.attach(short_instrument_name_markup,
-                     abjad.select(instrument.container).leaf(0),
-                     )
+        if instrument.short_instrument_name is not None:
+            # for better spacing, adding whitespace to end of instrument name
+            short_instrument_name = instrument.short_instrument_name
+            if short_instrument_name[-1] != ' ':
+                short_instrument_name + ' '
+            # creating markup
+            short_instrument_name_markup = abjad.MarginMarkup(
+                context=instrument.context,
+                markup=abjad.Markup(short_instrument_name),
+            )
+            # attaching markup
+            abjad.attach(short_instrument_name_markup,
+                        abjad.select(instrument.container).leaf(0),
+                        )
         
 
 def add_initial_clefs(instrument_properties: List[namedtuple]) -> None:
