@@ -17,7 +17,7 @@ def add_instrument_names(instrument_properties: List[namedtuple]) -> None:
         None
     """
     for instrument in instrument_properties:
-        if instrument.instrument_name is not None:
+        if instrument.instrument_name is not '':
             # for better spacing, adding whitespace to end of instrument name
             instrument_name = instrument.instrument_name
             if instrument_name[-1] != ' ':
@@ -32,7 +32,7 @@ def add_instrument_names(instrument_properties: List[namedtuple]) -> None:
                         abjad.select(instrument.container).leaf(0),
                         )
         
-        if instrument.short_instrument_name is not None:
+        if instrument.short_instrument_name is not '':
             # for better spacing, adding whitespace to end of instrument name
             short_instrument_name = instrument.short_instrument_name
             if short_instrument_name[-1] != ' ':
