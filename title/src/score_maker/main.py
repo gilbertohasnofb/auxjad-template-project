@@ -23,7 +23,7 @@ def main():
         None
     """
     # reading config.toml file
-    with open('./config/config.toml', 'rb') as f:
+    with open('./src/config/config.toml', 'rb') as f:
         config_dict = tomli.load(f)
 
     # Header

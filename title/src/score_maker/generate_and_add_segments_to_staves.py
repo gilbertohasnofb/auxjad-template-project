@@ -3,7 +3,7 @@ from typing import List
 import abjad
 from tqdm import tqdm
 
-import segments
+from .. import segments
 
 
 def generate_and_add_segments_to_staves(staves: List[abjad.Staff]) -> None:

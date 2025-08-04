@@ -25,39 +25,39 @@ def compile_ly_file(
     print()
 
     # reading config.toml file
-    with open('./config/config.toml', 'rb') as f:
+    with open('./src/config/config.toml', 'rb') as f:
         config_dict = tomli.load(f)
 
     # filename
     OUTPUT_FILENAME = config_dict['filename']['output_filename']
 
     # creating build directory
-    if os.path.exists('./build'):
-        print('Directory ./build already exists, removing it')
-        shutil.rmtree('./build')
-    print('Creating directory ./build')
-    os.mkdir('./build')
+    if os.path.exists('./src/build'):
+        print('Directory ./src/build already exists, removing it')
+        shutil.rmtree('./src/build')
+    print('Creating directory ./src/build')
+    os.mkdir('./src/build')
     print()
 
     # copying .ily files to build directory
     try:
-        os.mkdir('./build/includes')
+        os.mkdir('./src/build/includes')
     except:
-        print('Directory ./build/includes already exists')
+        print('Directory ./src/build/includes already exists')
         print()
     finally:
-        shutil.copyfile('./includes/stylesheet.ily',
-                        './build/includes/stylesheet.ily',
+        shutil.copyfile('./src/includes/stylesheet.ily',
+                        './src/build/includes/stylesheet.ily',
                         )
     
     # generating files
     abjad.persist.as_pdf(
         lilypond_file,
-        f'./build/{OUTPUT_FILENAME}.pdf',
+        f'./src/build/{OUTPUT_FILENAME}.pdf',
     )
 
     # confirm build successful
-    if os.path.exists(f'./build/{OUTPUT_FILENAME}.pdf'):
+    if os.path.exists(f'./src/build/{OUTPUT_FILENAME}.pdf'):
         print('Success')
     else:
         print('Something went wrong, build was not successful')

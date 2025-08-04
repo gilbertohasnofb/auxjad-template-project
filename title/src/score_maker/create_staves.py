@@ -17,7 +17,7 @@ def create_staves() -> Tuple[List[abjad.Staff], List[namedtuple]]:
         Tuple containing list of abjad.Staff's and list of namedtuple's
     """
     # reading config.toml file
-    with open('./config/config.toml', 'rb') as f:
+    with open('./src/config/config.toml', 'rb') as f:
         config_dict = tomli.load(f)
 
     STAFF_NAMES = config_dict['instrumentation']['staff_names']
