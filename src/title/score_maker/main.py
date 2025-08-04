@@ -1,4 +1,12 @@
-from .auxiliary_score_maker_functions import *
+from .create_staves import create_staves
+from .generate_and_add_segments_to_staves import generate_and_add_segments_to_staves
+from .prettify_score import prettify_score
+from .generate_lilypond_file_structure import generate_lilypond_file_structure
+from .add_large_time_signatures import add_large_time_signatures
+from .add_instrument_names import add_instrument_names
+from .add_initial_clefs import add_initial_clefs
+from .add_tempo_and_final_tweaks import add_tempo_and_final_tweaks
+from .compile_ly_file import compile_ly_file
 
 
 def main():
@@ -16,7 +24,7 @@ def main():
     
     staves, instrument_properties = create_staves(composition_filename=COMPOSITION_FILENAME)
     generate_and_add_segments_to_staves(staves)
-    # prettify_score(staves)
+    prettify_score(staves)
     lilypond_file, score = generate_lilypond_file_structure(instrument_properties)
     # add_large_time_signatures(staves, score)
     add_instrument_names(instrument_properties)
