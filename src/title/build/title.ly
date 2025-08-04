@@ -23,6 +23,38 @@
             d''4
             e''4
             f''4
+            c''4
+            d''4
+            e''4
+            f''4
+            c''4
+            d''4
+            e''4
+            f''4
+            \times 2/3
+            {
+                ef'2
+                gf'2
+                af'2
+            }
+            \times 2/3
+            {
+                ef'2
+                gf'2
+                af'2
+            }
+            a''4
+            g''4
+            f''4
+            e''4
+            a''4
+            g''4
+            f''4
+            e''4
+            a''4
+            g''4
+            f''4
+            e''4
             \bar "|."
         }
         \context PianoStaff = "Piano"
@@ -39,6 +71,22 @@
                 d'4
                 e'4
                 f'4
+                c'4
+                d'4
+                e'4
+                f'4
+                c'4
+                d'4
+                e'4
+                f'4
+                <df' ef'>1
+                <df' ef'>1
+                r2
+                <f' a'>2
+                r2
+                <f' a'>2
+                r2
+                <f' a'>2
                 \bar "|."
             }
             \context Staff = "Piano_Lower"
@@ -47,6 +95,18 @@
                 \tempo-markup
                 c2
                 g2
+                c2
+                g2
+                c2
+                g2
+                <df, ef,>1
+                <df, ef,>1
+                r2
+                <f a>2
+                r2
+                <f a>2
+                r2
+                <f a>2
                 \bar "|."
             }
         >>
@@ -64,6 +124,30 @@
                 d''4
                 e''4
                 f''4
+                c''4
+                d''4
+                e''4
+                f''4
+                c''4
+                d''4
+                e''4
+                f''4
+                gf'2
+                df'2
+                gf'2
+                df'2
+                a''4
+                g''4
+                f''4
+                e''4
+                a''4
+                g''4
+                f''4
+                e''4
+                a''4
+                g''4
+                f''4
+                e''4
                 \bar "|."
             }
             \context Staff = "Harp_Lower"
@@ -72,6 +156,15 @@
                 \tempo-markup
                 c,2
                 g,2
+                c,2
+                g,2
+                c,2
+                g,2
+                R1
+                R1
+                d1
+                d1
+                d1
                 \bar "|."
             }
         >>
@@ -84,6 +177,16 @@
             \clef "bass"
             \tempo-markup
             c,1
+            c,1
+            c,1
+            ef1
+            ef1
+            d,2
+            r2
+            d,2
+            r2
+            d,2
+            r2
             \bar "|."
         }
     >>

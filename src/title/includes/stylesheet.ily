@@ -18,6 +18,7 @@
 % }
 
 % #(set-global-staff-size 16.5)
+#(set-global-staff-size 15.5)
 #(set-default-paper-size "a4landscape")
 
 \paper {
