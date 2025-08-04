@@ -1,2 +1,3 @@
 abjad==3.4
 auxjad>=1.0.0
+tomli==2.2.1

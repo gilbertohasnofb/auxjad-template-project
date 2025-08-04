@@ -1,8 +1,8 @@
 Title (year)
 ============
 
-Gilberto Agostinho
-------------------
+Composer
+--------
 
 For instrument 1, instrument 2, and instrument 3. Dedicated to XXXXXX.
 
