@@ -4,14 +4,18 @@ Title (year)
 Composer
 --------
 
-For instrument 1, instrument 2, and instrument 3. Dedicated to XXXXXX.
+Dedicated to XXXXXX.
 
-Execute it using::
+For instrument 1, instrument 2, and instrument 3. 
+
+Execute it using:
+
+.. code-block::
 
     ~$ python3 ./title.py
     
 Requires:
 
-    * LilyPond 2.24
-    * Abjad 3.4
-    * Auxjad 1.0
+* LilyPond 2.24
+* Abjad 3.4
+* Auxjad 1.0
