@@ -28,12 +28,13 @@ def make_segment_B(*,
         random.seed(seed)
 
     segment_B_music = [
-        abjad.Staff(r"\times 2/3 {ef'2 gf'2 af'2} \times 2/3 {ef'2 gf'2 af'2}"),
-        abjad.Staff(r"<df' ef'>1 <df' ef'>1"),
-        abjad.Staff(r"<df, ef,>1 <df, ef,>1"),
-        abjad.Staff(r"gf'2 df'2 gf'2 df'2"),
-        abjad.Staff(r"R1 R1"),
-        abjad.Staff(r"ef1 ef1"),
+        abjad.Staff(r"\times 2/3 {ef'2 gf'2 af'2}"),
+        abjad.Staff(r"<df''' ef'''>1"),
+        abjad.Staff(r"r4 gf'2."),
+        abjad.Staff(r"<df, ef,>1"),
+        abjad.Staff(r"gf'2 df'2"),
+        abjad.Staff(r"R1"),
+        abjad.Staff(r"ef1"),
     ]
 
     return segment_B_music

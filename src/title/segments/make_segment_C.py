@@ -28,12 +28,13 @@ def make_segment_C(*,
         random.seed(seed)
 
     segment_C_music = [
-        abjad.Staff(r"a''4 g''4 f''4 e''4 a''4 g''4 f''4 e''4 a''4 g''4 f''4 e''4"),
-        abjad.Staff(r"r2 <f' a'>2 r2 <f' a'>2 r2 <f' a'>2"),
-        abjad.Staff(r"r2 <f a>2 r2 <f a>2 r2 <f a>2"),
-        abjad.Staff(r"a''4 g''4 f''4 e''4 a''4 g''4 f''4 e''4 a''4 g''4 f''4 e''4"),
-        abjad.Staff(r"d1 d1 d1"),
-        abjad.Staff(r"d,2 r2 d,2 r2 d,2 r2"),
+        abjad.Staff(r"a''4 g''4 f''4 e''4"),
+        abjad.Staff(r"r2 <f' a'>2"),
+        abjad.Staff(r"\times 2/3 {a'2 e'2 d'2}"),
+        abjad.Staff(r"r2 <f a>2 "),
+        abjad.Staff(r"a''4 g''4 f''4 e''4"),
+        abjad.Staff(r"d1"),
+        abjad.Staff(r"d,2 r2"),
     ]
 
     return segment_C_music

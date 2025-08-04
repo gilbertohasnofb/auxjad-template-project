@@ -2,6 +2,7 @@ from collections import namedtuple
 from typing import Tuple, List
 
 import abjad
+import tomli
 
 
 def create_staves(
@@ -23,32 +24,17 @@ def create_staves(
     print('=================')
     print()
 
-    # creating staves
-    staff_1 = abjad.Staff(name='Flute')
-    staff_2 = abjad.Staff(name='Piano_Upper')
-    staff_3 = abjad.Staff(name='Piano_Lower')
-    staff_4 = abjad.Staff(name='Harp_Upper')
-    staff_5 = abjad.Staff(name='Harp_Lower')
-    staff_6 = abjad.Staff(name='Cello')
-    staves = [staff_1,
-              staff_2,
-              staff_3,
-              staff_4,
-              staff_5,
-              staff_6,
-              ]
+    # reading config.toml file
+    with open('title/config/config.toml', 'rb') as f:
+        config_dict = tomli.load(f)
 
-    # creating staff groups
-    staff_group_1 = abjad.StaffGroup([staff_2, staff_3],
-                                     name='Piano',
-                                     lilypond_type='PianoStaff',
-                                     )
-    staff_group_2 = abjad.StaffGroup([staff_4, staff_5],
-                                     name='Harp',
-                                     lilypond_type='GrandStaff',
-                                     )
-    
-    # creating instrument properties (can be extended to include initial dynamics, pedalling, etc.)
+    STAFF_NAMES = config_dict['instrumentation']['staff_names']
+    CONTEXTS = config_dict['instrumentation']['contexts']
+    INSTRUMENT_NAMES = config_dict['instrumentation']['instrument_names']
+    SHORT_INSTRUMENT_NAMES = config_dict['instrumentation']['short_instrument_names']
+    INITIAL_CLEFS = config_dict['instrumentation']['initial_clefs']
+
+    # Defining named tuple
     InstrumentProperties = namedtuple(
         'Staff', 
         [
@@ -59,35 +45,41 @@ def create_staves(
             'context',
         ]
     )
-    instrument_properties = [
-        InstrumentProperties(
-            container=staff_1,
-            instrument_name='Flute',
-            short_instrument_name='Fl.',
-            initial_clef='treble',
-            context='Staff',
-        ),
-        InstrumentProperties(
-            container=staff_group_1,
-            instrument_name='Piano',
-            short_instrument_name='Pno.',
-            initial_clef=['treble', 'bass'],
-            context='PianoStaff',
-        ),
-        InstrumentProperties(
-            container=staff_group_2,
-            instrument_name='Harp',
-            short_instrument_name='Hp.',
-            initial_clef=['treble', 'bass'],
-            context='GrandStaff',
-            ),
-        InstrumentProperties(
-            container=staff_6,
-            instrument_name='Cello',
-            short_instrument_name='Vcl.',
-            initial_clef='bass',
-            context='Staff',
-        ),
-    ]
+
+    # creating staves and instrument_properties
+    staves = []
+    instrument_properties = []
+    
+    for index, staff_name in enumerate(STAFF_NAMES):
+        # single staff instruments, i.e. not in a StaffGroup
+        if not isinstance(staff_name, list):
+            staff = abjad.Staff(name=staff_name)
+            instrument_property = InstrumentProperties(
+                container=staff,
+                instrument_name=INSTRUMENT_NAMES[index],
+                short_instrument_name=SHORT_INSTRUMENT_NAMES[index],
+                initial_clef=INITIAL_CLEFS[index],
+                context=CONTEXTS[index],
+            )
+            staves.append(staff)
+            instrument_properties.append(instrument_property)
+        else:
+            # instruments in a StaffGroup
+            staff_group = abjad.StaffGroup(
+                name=INSTRUMENT_NAMES[index],
+                lilypond_type=CONTEXTS[index],
+            )
+            for single_name in staff_name:
+                staff = abjad.Staff(name=single_name)
+                staves.append(staff)
+                staff_group.append(staff)
+            instrument_property = InstrumentProperties(
+                container=staff_group,
+                instrument_name=INSTRUMENT_NAMES[index],
+                short_instrument_name=SHORT_INSTRUMENT_NAMES[index],
+                initial_clef=INITIAL_CLEFS[index],
+                context=CONTEXTS[index],
+            )
+            instrument_properties.append(instrument_property)
 
     return staves, instrument_properties

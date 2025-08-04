@@ -1,0 +1,73 @@
+[project_structure]
+    composition_filename = 'title'
+    composition_root_directory = './title'
+
+[header]
+    title = 'title'
+    subtitle = 'subtitle'
+    composer = 'composer'
+    dedication = 'dedication'
+    poet = 'Score in C'
+    fontsize = 1.5
+
+[tempo]
+    reference_note = 4
+    tempo_markup = "ca. 60"
+
+[layout]
+    paper_size = 'a4'
+    paper_orientation = 'portrait'
+    staff_size = 15.5
+    top_margin = '2.0\cm'
+    bottom_margin = '2.3\cm'
+    left_margin = '1.7\cm'
+    right_margin = '1.7\cm'
+    indent = '1.4\cm'
+    short_indent = '1.1\cm'
+    markup_system_spacing.basic_distance = 4
+    markup_system_spacing.minimum_distance = 4
+    markup_system_spacing.padding = 4
+    system_system_spacing.minimum_distance = 15
+    print_page_number = '##f'
+    ragged_last_bottom = '##f'
+    min_systems_per_page = 2
+    max_systems_per_page = 2
+    system_separator = '\fill-line { \slashSeparator \slashSeparator }'
+
+[style]
+    accidental_style = 'dodecaphonic'
+    flag_style = 'flat-flag'
+    timing_base_moment = '1/4'
+    base_shortest_duration = '1/32'
+
+[instrumentation]
+    staff_names = [
+        'Flute',
+        ['Piano_Upper', 'Piano_Middle', 'Piano_Lower'],
+        ['Harp_Upper', 'Harp_Lower'],
+        'Cello',
+    ]
+    contexts = [
+        'Staff',
+        'PianoStaff',
+        'GrandStaff',
+        'Staff',
+    ]
+    instrument_names = [
+        'Flute',
+        'Piano',
+        'Harp',
+        'Cello',
+    ]
+    short_instrument_names = [
+        'Fl.',
+        'Pno',
+        'Hp.',
+        'Vcl.',
+    ]
+    initial_clefs = [
+        'treble',
+        ['treble^8', 'treble', 'bass'],
+        ['treble', 'bass'],
+        'bass',
+    ]

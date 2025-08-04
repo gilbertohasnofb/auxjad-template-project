@@ -1,3 +1,5 @@
+import tomli
+
 from .create_staves import create_staves
 from .generate_and_add_segments_to_staves import generate_and_add_segments_to_staves
 from .prettify_score import prettify_score
@@ -6,6 +8,7 @@ from .add_large_time_signatures import add_large_time_signatures
 from .add_instrument_names import add_instrument_names
 from .add_initial_clefs import add_initial_clefs
 from .add_tempo_and_final_tweaks import add_tempo_and_final_tweaks
+from .stylesheet_generator import stylesheet_generator
 from .compile_ly_file import compile_ly_file
 
 
@@ -19,8 +22,8 @@ def main():
     Returns:
         None
     """
-    COMPOSITION_FILENAME = 'title'  # RENAME title
-    COMPOSITION_ROOT_DIRECTORY = './title'  # RENAME title
+    COMPOSITION_FILENAME = 'title'
+    COMPOSITION_ROOT_DIRECTORY = './title'
     
     staves, instrument_properties = create_staves(composition_filename=COMPOSITION_FILENAME)
     generate_and_add_segments_to_staves(staves)
@@ -30,9 +33,8 @@ def main():
     add_instrument_names(instrument_properties)
     add_initial_clefs(instrument_properties)
     add_tempo_and_final_tweaks(staves, score)
+    stylesheet_generator()
     compile_ly_file(lilypond_file,
                     composition_filename=COMPOSITION_FILENAME,
                     composition_root_directory=COMPOSITION_ROOT_DIRECTORY,
                     )
-
-
