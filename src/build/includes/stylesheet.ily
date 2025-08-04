@@ -2,11 +2,26 @@
     \include "articulate.ly"
 
     \header {
-        title = \markup{\override #'(font-name . "Futura Bold") \fontsize #1.5 "title"}
-        subtitle = \markup{\override #'(font-name . "Futura Bold") \fontsize #1.5 "subtitle"}
-        composer = \markup{\override #'(font-name . "Futura Medium") \fontsize #1.5 "composer"}
-        dedication = \markup{\override #'(font-name . "Futura Italic") \fontsize #1.5 \raise #1 "dedication"}
-        poet = \markup{\override #'(font-name . "Futura Medium") \fontsize #1.5 "Score in C"}
+        title = \markup{
+            \override #'(font-name . "Futura Bold")
+            \fontsize #1.5 "title"
+        }
+        subtitle = \markup{
+            \override #'(font-name . "Futura Medium")
+            \fontsize #1.5 "subtitle"
+        }
+        composer = \markup{
+            \override #'(font-name . "Futura Medium")
+            \fontsize #1.5 "composer"
+        }
+        dedication = \markup{
+            \override #'(font-name . "Futura Italic")
+            \fontsize #1.5 \raise #1 "dedication"
+        }
+        poet = \markup{
+            \override #'(font-name . "Futura Medium")
+            \fontsize #1.5 "Score in C"
+        }
         tagline = ""
     }
 
@@ -49,7 +64,8 @@
         
         % larger rehearsal marks surrounded by squares
         \set Score.markFormatter = #format-mark-box-alphabet
-        \override Score.RehearsalMark.self-alignment-X = #LEFT  % good if using large time sigs above score
+        \override Score.RehearsalMark.self-alignment-X = #LEFT  % good if using large time
+                                                                 % signatures above score
         \override Score.RehearsalMark.font-size = #5
         \override Score.RehearsalMark.extra-offset = #'(0.0 . 1.0)
 

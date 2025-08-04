@@ -33,6 +33,10 @@
             g''4
             f''4
             e''4
+            a''4
+            g''4
+            f''4
+            e''4
             \bar "|."
         }
         \context PianoStaff = "Piano"
@@ -46,13 +50,15 @@
                 \clef "treble^8"
                 \tempo-markup
                 r8
-                c'8
-                d'4
-                e'4
-                f'4
+                c'''8
+                d'''4
+                e'''4
+                f'''4
                 <df''' ef'''>1
                 r2
-                <f' a'>2
+                <f'' a''>2
+                r2
+                <f'' a''>2
                 \bar "|."
             }
             \context Staff = "Piano_Middle"
@@ -62,13 +68,9 @@
                 c'1
                 r4
                 gf'2.
-                \times 2/3
-                {
-                    a'2
-                    e'2
-                    d'2
-                    \bar "|."
-                }
+                <d' e' a'>1
+                <d' e' a'>1
+                \bar "|."
             }
             \context Staff = "Piano_Lower"
             {
@@ -77,6 +79,8 @@
                 c2
                 g2
                 <df, ef,>1
+                r2
+                <f a>2
                 r2
                 <f a>2
                 \bar "|."
@@ -102,6 +106,10 @@
                 g''4
                 f''4
                 e''4
+                a''4
+                g''4
+                f''4
+                e''4
                 \bar "|."
             }
             \context Staff = "Harp_Lower"
@@ -111,6 +119,7 @@
                 c,2
                 g,2
                 R1
+                d1
                 d1
                 \bar "|."
             }
@@ -125,6 +134,8 @@
             \tempo-markup
             c,1
             ef1
+            d,2
+            r2
             d,2
             r2
             \bar "|."

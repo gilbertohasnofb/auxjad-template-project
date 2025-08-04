@@ -5,8 +5,8 @@ import abjad
 import auxjad
 from tqdm import tqdm
 
-from .. import tools
-from .. import materials
+import tools
+import materials
 
 
 def make_segment_B(*,

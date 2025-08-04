@@ -2,13 +2,11 @@ import os
 import shutil
 
 import abjad
+import tomli
 
 
 def compile_ly_file(
         lilypond_file: abjad.LilyPondFile,
-        *,
-        composition_filename: str,
-        composition_root_directory: str,
     ) -> None:
     r"""
     Creates list of staves and list of instrument properties (staves, instrument names, clefs,
@@ -25,34 +23,41 @@ def compile_ly_file(
     print('Compiling .ly file')
     print('------------------')
     print()
-    # creating build directory
 
-    if os.path.exists(f'{composition_root_directory}/build'):
-        print(f'Directory {composition_root_directory}/build already exists, removing it')
-        shutil.rmtree(f'{composition_root_directory}/build')
-    print(f'Creating directory {composition_root_directory}/build')
-    os.mkdir(f'{composition_root_directory}/build')
+    # reading config.toml file
+    with open('./config/config.toml', 'rb') as f:
+        config_dict = tomli.load(f)
+
+    # filename
+    OUTPUT_FILENAME = config_dict['filename']['output_filename']
+
+    # creating build directory
+    if os.path.exists('./build'):
+        print('Directory ./build already exists, removing it')
+        shutil.rmtree('./build')
+    print('Creating directory ./build')
+    os.mkdir('./build')
     print()
 
     # copying .ily files to build directory
     try:
-        os.mkdir(f'{composition_root_directory}/build/includes')
+        os.mkdir('./build/includes')
     except:
-        print(f'Directory {composition_root_directory}/build/includes already exists')
+        print('Directory ./build/includes already exists')
         print()
     finally:
-        shutil.copyfile(f'{composition_root_directory}/includes/stylesheet.ily',
-                        f'{composition_root_directory}/build/includes/stylesheet.ily',
+        shutil.copyfile('./includes/stylesheet.ily',
+                        './build/includes/stylesheet.ily',
                         )
     
     # generating files
     abjad.persist.as_pdf(
         lilypond_file,
-        f'{composition_root_directory}/build/{composition_filename}.pdf',
+        f'./build/{OUTPUT_FILENAME}.pdf',
     )
 
     # confirm build successful
-    if os.path.exists(f'{composition_root_directory}/build/{composition_filename}.pdf'):
+    if os.path.exists(f'./build/{OUTPUT_FILENAME}.pdf'):
         print('Success')
     else:
         print('Something went wrong, build was not successful')

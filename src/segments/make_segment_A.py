@@ -5,8 +5,8 @@ import abjad
 import auxjad
 from tqdm import tqdm
 
-from .. import tools
-from .. import materials
+import tools
+import materials
 
 
 def make_segment_A(*,
@@ -29,7 +29,7 @@ def make_segment_A(*,
 
     segment_A_music = [
         abjad.Staff(r"c''4 d''4 e''4 f''4"),
-        abjad.Staff(r"r8 c'8 d'4 e'4 f'4"),
+        abjad.Staff(r"r8 c'''8 d'''4 e'''4 f'''4"),
         abjad.Staff(r"c'1"),
         abjad.Staff(r"c2 g2"),
         abjad.Staff(r"c''4 d''4 e''4 f''4"),

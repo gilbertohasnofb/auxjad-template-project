@@ -12,7 +12,7 @@ def stylesheet_generator() -> None:
         None
     """
     # reading config.toml file
-    with open('title/config/config.toml', 'rb') as f:
+    with open('./config/config.toml', 'rb') as f:
         config_dict = tomli.load(f)
 
     # Header
@@ -68,7 +68,7 @@ def stylesheet_generator() -> None:
             \\fontsize #{FONTSIZE} "{TITLE}"
         }}
         subtitle = \\markup{{
-            \\override #'(font-name . "Futura Bold")
+            \\override #'(font-name . "Futura Medium")
             \\fontsize #{FONTSIZE} "{SUBTITLE}"
         }}
         composer = \\markup{{
@@ -226,5 +226,5 @@ def stylesheet_generator() -> None:
     }}
     """
 
-    with open('title/includes/stylesheet.ily', 'w+') as f:
+    with open('./includes/stylesheet.ily', 'w+') as f:
         f.writelines(stylesheet_string)

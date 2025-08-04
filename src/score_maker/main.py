@@ -22,10 +22,18 @@ def main():
     Returns:
         None
     """
-    COMPOSITION_FILENAME = 'title'
-    COMPOSITION_ROOT_DIRECTORY = './title'
-    
-    staves, instrument_properties = create_staves(composition_filename=COMPOSITION_FILENAME)
+    # reading config.toml file
+    with open('./config/config.toml', 'rb') as f:
+        config_dict = tomli.load(f)
+
+    # Header
+    TITLE = config_dict['header']['title']
+    print()
+    print(TITLE)
+    print('=' * len(TITLE))
+    print()
+
+    staves, instrument_properties = create_staves()
     generate_and_add_segments_to_staves(staves)
     prettify_score(staves)
     lilypond_file, score = generate_lilypond_file_structure(instrument_properties)
@@ -34,7 +42,4 @@ def main():
     add_initial_clefs(instrument_properties)
     add_tempo_and_final_tweaks(staves, score)
     stylesheet_generator()
-    compile_ly_file(lilypond_file,
-                    composition_filename=COMPOSITION_FILENAME,
-                    composition_root_directory=COMPOSITION_ROOT_DIRECTORY,
-                    )
+    compile_ly_file(lilypond_file)

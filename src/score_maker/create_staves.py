@@ -5,27 +5,19 @@ import abjad
 import tomli
 
 
-def create_staves(
-        *,
-        composition_filename: str
-    ) -> Tuple[List[abjad.Staff], List[namedtuple]]:
+def create_staves() -> Tuple[List[abjad.Staff], List[namedtuple]]:
     r"""
     Creates list of staves and list of instrument properties (staves, instrument names, clefs,
         etc.).
 
     Arguments:
-        composition_filename: str with the filename of the composition
+        None
 
     Returns
         Tuple containing list of abjad.Staff's and list of namedtuple's
     """
-    print()
-    print(composition_filename)
-    print('=================')
-    print()
-
     # reading config.toml file
-    with open('title/config/config.toml', 'rb') as f:
+    with open('./config/config.toml', 'rb') as f:
         config_dict = tomli.load(f)
 
     STAFF_NAMES = config_dict['instrumentation']['staff_names']

@@ -1,6 +1,5 @@
-[project_structure]
-    composition_filename = 'title'
-    composition_root_directory = './title'
+[filename]
+    output_filename = 'title'
 
 [header]
     title = 'title'
