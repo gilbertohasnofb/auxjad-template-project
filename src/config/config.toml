@@ -15,7 +15,6 @@
 
 [layout]
     paper_size = 'a4'
-    paper_orientation = 'portrait'
     staff_size = 15.5
     top_margin = '2.0\cm'
     bottom_margin = '2.3\cm'

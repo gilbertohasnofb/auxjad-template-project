@@ -25,7 +25,6 @@ def stylesheet_generator() -> None:
 
     # Layout
     PAPER_SIZE = config_dict['layout']['paper_size']
-    PAPER_ORIENTATION = config_dict['layout']['paper_orientation']
     STAFF_SIZE = config_dict['layout']['staff_size']
     TOP_MARGIN = config_dict['layout']['top_margin']
     BOTTOM_MARGIN = config_dict['layout']['bottom_margin']
@@ -86,7 +85,7 @@ def stylesheet_generator() -> None:
         tagline = ""
     }}
 
-    #(set-default-paper-size "{PAPER_SIZE}" '{PAPER_ORIENTATION})
+    #(set-default-paper-size "{PAPER_SIZE}")
     #(set-global-staff-size {STAFF_SIZE})
 
     \\paper {{

@@ -25,7 +25,7 @@
         tagline = ""
     }
 
-    #(set-default-paper-size "a4" 'portrait)
+    #(set-default-paper-size "a4")
     #(set-global-staff-size 15.5)
 
     \paper {
