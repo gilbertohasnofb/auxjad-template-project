@@ -21,8 +21,9 @@ def generate_and_add_segments_to_staves(staves: List[abjad.Staff]) -> None:
     print()
 
     list_of_segments = []
-    for i, segment in enumerate(segments.segment_factory()):
+    for segment in segments.segment_factory():
         list_of_segments.append(segment)
+    print()
 
     print('Adding segments to staves')
     print('-------------------------')

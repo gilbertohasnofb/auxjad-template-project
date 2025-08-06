@@ -1,3 +1,5 @@
+import textwrap
+
 import tomli
 
 
@@ -49,16 +51,19 @@ def stylesheet_generator() -> None:
     SYSTEM_SEPARATOR = config_dict['layout']['system_separator']
 
     # Tempo
-    REFERENCE_NOTE = config_dict['tempo']['reference_note']
-    TEMPO_MARKUP = config_dict['tempo']['tempo_markup']
+    CUSTOM_TEMPO_MARKUP = config_dict['tempo']['custom_tempo_markup']
+    INITIAL_REFERENCE_NOTE = config_dict['tempo']['initial_reference_note']
+    INITIAL_TEMPO_MARKUP = config_dict['tempo']['initial_tempo_markup']
 
     # Style
     ACCIDENTAL_STYLE = config_dict['style']['accidental_style']
     FLAG_STYLE = config_dict['style']['flag_style']
     TIMING_BASE_MOMENT = config_dict['style']['timing_base_moment']
     BASE_SHORTEST_DURATION = config_dict['style']['base_shortest_duration']
+    HORIZONTAL_TUPLETS = config_dict['style']['horizontal_tuplets']
+    LARGE_TIME_SIGNATURES = config_dict['style']['large_time_signatures']
 
-    stylesheet_string = f"""
+    stylesheet_header = f"""
     \\include "articulate.ly"
 
     \\header {{
@@ -84,10 +89,14 @@ def stylesheet_generator() -> None:
         }}
         tagline = ""
     }}
+    """
 
+    stylesheet_paper_size = f"""
     #(set-default-paper-size "{PAPER_SIZE}")
     #(set-global-staff-size {STAFF_SIZE})
+    """
 
+    stylesheet_paper_block = f"""
     \\paper {{
         top-margin = {TOP_MARGIN}
         bottom-margin = {BOTTOM_MARGIN}
@@ -107,7 +116,9 @@ def stylesheet_generator() -> None:
             {SYSTEM_SEPARATOR}
         }}
     }}
+    """
 
+    stylesheet_layout_block_start = f"""
     \\layout {{
         % accidental styles
         \\accidentalStyle Score.{ACCIDENTAL_STYLE}
@@ -123,7 +134,7 @@ def stylesheet_generator() -> None:
         \\override Score.BarNumber.Y-offset = 3.7
         
         % larger rehearsal marks surrounded by squares
-        \\set Score.markFormatter = #format-mark-box-alphabet
+        \\set Score.rehearsalMarkFormatter = #format-mark-box-alphabet
         \\override Score.RehearsalMark.self-alignment-X = #LEFT  % good if using large time
                                                                  % signatures above score
         \\override Score.RehearsalMark.font-size = #5
@@ -164,6 +175,11 @@ def stylesheet_generator() -> None:
         \\override TupletBracket.minimum-length = #8
         \\override TupletNumber.text = #tuplet-number::calc-fraction-text
 
+        % curly braces should be displayed even when a single staff is shown
+        \\override GrandStaff.SystemStartBrace.collapse-height = #4
+    """
+
+    stylesheet_horizontal_tuplets = f"""
         % horizontal tuplets
         \\override TupletBracket.stencil =
         #(lambda (grob)
@@ -180,10 +196,9 @@ def stylesheet_generator() -> None:
             \\Score
             tupletFullLength = ##t
         }}
+    """
 
-        % curly braces should be displayed even when a single staff is shown
-        \\override GrandStaff.SystemStartBrace.collapse-height = #4
-        
+    stylesheet_large_time_signatures = f"""
         % large time signatures above score
         \\override Score.TimeSignature.break-visibility = #'#(#f #t #t)
         \\context {{
@@ -208,22 +223,43 @@ def stylesheet_generator() -> None:
             \\Staff
             \\remove "Time_signature_engraver"
         }}
+    """
+    
+    stylesheet_layout_block_end = f"""
     }}
+    """
 
+    stylesheet_custom_tempo_markup = f"""
     tempo-markup = {{
         \\once \\override Score.MetronomeMark.self-alignment-X = #LEFT
         \\once \\override Score.MetronomeMark.extra-offset = #'(0 . 2)
         \\tempo \\markup{{
             \\concat{{
                 \\small{{
-                    \\override #'(flag-style . flat-flag)
-                    \\general-align #Y #DOWN \\note {{{REFERENCE_NOTE}}} #1
-                    \\larger " = {TEMPO_MARKUP}"
+                    \\override #'(flag-style . {FLAG_STYLE})
+                    \\general-align #Y #DOWN \\note {{{INITIAL_REFERENCE_NOTE}}} #1
+                    \\larger " = {INITIAL_TEMPO_MARKUP}"
                 }}
             }}
         }}
     }}
     """
+
+    # joining strings
+    stylesheet_string = ""
+    stylesheet_string += stylesheet_header
+    stylesheet_string += stylesheet_paper_size
+    stylesheet_string += stylesheet_paper_block
+    stylesheet_string += stylesheet_layout_block_start
+    if HORIZONTAL_TUPLETS:
+        stylesheet_string += stylesheet_horizontal_tuplets
+    if LARGE_TIME_SIGNATURES:
+        stylesheet_string += stylesheet_large_time_signatures
+    stylesheet_string += stylesheet_layout_block_end
+    if CUSTOM_TEMPO_MARKUP:
+        stylesheet_string += stylesheet_custom_tempo_markup
+    
+    stylesheet_string = textwrap.dedent(stylesheet_string)
 
     with open('./src/includes/stylesheet.ily', 'w+') as f:
         f.writelines(stylesheet_string)

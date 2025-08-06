@@ -22,7 +22,7 @@ def make_segment_A(*,
         tuple of abjad.Staff's
     """
     
-    print('* making Segment A')
+    print('* Generating Segment A')
     
     if seed:
         random.seed(seed)
@@ -36,5 +36,8 @@ def make_segment_A(*,
         abjad.Staff(r"c,2 g,2"),
         abjad.Staff(r"c,1"),
     ]
+
+    for staff in segment_A_music:
+        abjad.attach(abjad.TimeSignature((4, 4)), abjad.select(staff).leaf(0))
 
     return segment_A_music

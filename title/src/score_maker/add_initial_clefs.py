@@ -17,7 +17,6 @@ def add_initial_clefs(instrument_properties: List[namedtuple]) -> None:
     Returns
         None
     """
-    # adding initial clefs
     for instrument in instrument_properties:
         if instrument.initial_clef is None:
             continue

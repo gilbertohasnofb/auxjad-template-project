@@ -22,19 +22,22 @@ def make_segment_B(*,
         tuple of abjad.Staff's
     """
     
-    print('* making Segment B')
+    print('* Generating Segment B')
     
     if seed:
         random.seed(seed)
 
     segment_B_music = [
-        abjad.Staff(r"\times 2/3 {ef'2 gf'2 af'2}"),
-        abjad.Staff(r"<df''' ef'''>1"),
-        abjad.Staff(r"r4 gf'2."),
-        abjad.Staff(r"<df, ef,>1"),
-        abjad.Staff(r"gf'2 df'2"),
-        abjad.Staff(r"R1"),
-        abjad.Staff(r"ef1"),
+        abjad.Staff(r"\times 2/3 {ef'4 gf'4 af'4 ~} af'4 \times 2/3 {ef'4 gf'4 af'4 ~} af'4"),
+        abjad.Staff(r"<df''' ef'''>2. <df''' ef'''>2."),
+        abjad.Staff(r"r4 gf'2 r4 gf'2"),
+        abjad.Staff(r"<df, ef,>2. <df, ef,>2."),
+        abjad.Staff(r"gf'2 df'4 gf'2 df'4"),
+        abjad.Staff(r"R1 * 3/4 R1 * 3/4"),
+        abjad.Staff(r"ef2. ef2."),
     ]
+
+    for staff in segment_B_music:
+        abjad.attach(abjad.TimeSignature((3, 4)), abjad.select(staff).leaf(0))
 
     return segment_B_music

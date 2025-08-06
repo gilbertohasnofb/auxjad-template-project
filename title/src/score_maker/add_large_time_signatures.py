@@ -19,7 +19,6 @@ def add_large_time_signatures(
     Returns
         None
     """
-    # creating time-signature-only staff for large time signatures
     time_sig_staff = abjad.Staff(lilypond_type='TimeSig')
     time_signatures = auxjad.get.time_signature_list(
         staves[0],
@@ -32,6 +31,4 @@ def add_large_time_signatures(
             abjad.attach(time_signature, abjad.select(rests).leaf(0))
         time_sig_staff.append(rests)
         previous_time_signature = time_signature
-    numeric_timesignature = abjad.LilyPondLiteral(r'\numericTimeSignature')
-    abjad.attach(numeric_timesignature, abjad.select(time_sig_staff).leaf(0))
     score.insert(0, time_sig_staff)

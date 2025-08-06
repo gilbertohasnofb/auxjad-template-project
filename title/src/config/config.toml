@@ -10,8 +10,9 @@
     fontsize = 1.5
 
 [tempo]
-    reference_note = 4
-    tempo_markup = "ca. 60"
+    custom_tempo_markup = true
+    initial_reference_note = 8
+    initial_tempo_markup = "ca. 60"
 
 [layout]
     paper_size = 'a4'
@@ -37,6 +38,8 @@
     flag_style = 'flat-flag'
     timing_base_moment = '1/4'
     base_shortest_duration = '1/32'
+    horizontal_tuplets = true
+    large_time_signatures = true  # 
 
 [instrumentation]
     staff_names = [

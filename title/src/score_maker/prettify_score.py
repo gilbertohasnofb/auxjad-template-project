@@ -15,7 +15,6 @@ def prettify_score(staves: List[abjad.Staff]) -> None:
     Returns
         None
     """
-    # prettifying score
     print('Prettifying score')
     print('-----------------')
     print()

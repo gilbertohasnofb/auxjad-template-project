@@ -17,7 +17,6 @@ def generate_lilypond_file_structure(
     Returns
         Tuple containing an abjad.LilyPondFile and an abjad.Score
     """
-    # creating .ly file structure
     print('Generating LilyPond file structure')
     print('----------------------------------')
     print()
@@ -39,5 +38,8 @@ def generate_lilypond_file_structure(
         items=[score_block],
         includes=['./includes/stylesheet.ily'],
     )
+
+    print('LilyPondFile generated')
+    print()
 
     return lilypond_file, score

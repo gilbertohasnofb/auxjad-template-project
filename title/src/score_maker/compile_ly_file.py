@@ -32,14 +32,16 @@ def compile_ly_file(
     OUTPUT_FILENAME = config_dict['filename']['output_filename']
 
     # creating build directory
-    if os.path.exists('./src/build'):
-        print('Directory ./src/build already exists, removing it')
-        shutil.rmtree('./src/build')
+
     print('Creating directory ./src/build')
-    os.mkdir('./src/build')
+    try:
+        os.mkdir('./src/build')
+    except:
+        print('Directory ./src/build already exists')
     print()
 
     # copying .ily files to build directory
+    print('Creating directory ./src/build/includes')
     try:
         os.mkdir('./src/build/includes')
     except:
