@@ -4,9 +4,9 @@ import abjad
 
 
 def add_tempo_and_final_tweaks(
-        staves: List[abjad.Staff],
-        score: abjad.Score,
-    ) -> None:
+    staves: List[abjad.Staff],
+    score: abjad.Score,
+) -> None:
     r"""
     Adds tempo marking, final bar line, and other final tweaks to the staves.
 
@@ -18,7 +18,7 @@ def add_tempo_and_final_tweaks(
         None
     """
     # tempo markup (defined as a LilyPond variable in stylesheet)
-    tempo_markup = abjad.LilyPondLiteral(r'\tempo-markup')
+    tempo_markup = abjad.LilyPondLiteral(r"\tempo-markup")
     for staff in staves:
         abjad.attach(tempo_markup, abjad.select(staff).leaf(0))
 

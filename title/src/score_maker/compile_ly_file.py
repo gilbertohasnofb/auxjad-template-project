@@ -6,8 +6,8 @@ import tomli
 
 
 def compile_ly_file(
-        lilypond_file: abjad.LilyPondFile,
-    ) -> None:
+    lilypond_file: abjad.LilyPondFile,
+) -> None:
     r"""
     Creates list of staves and list of instrument properties (staves, instrument names, clefs,
         etc.).
@@ -15,52 +15,53 @@ def compile_ly_file(
     Arguments:
         lilypond_file: abjad.LilyPondFile created by generate_lilypond_file_structure()
         composition_filename: str with the filename of the composition
-        root_directory: str with the composition root directory 
+        root_directory: str with the composition root directory
 
     Returns
         None
     """
-    print('Compiling .ly file')
-    print('------------------')
+    print("Compiling .ly file")
+    print("------------------")
     print()
 
     # reading config.toml file
-    with open('./src/config/config.toml', 'rb') as f:
+    with open("./src/config/config.toml", "rb") as f:
         config_dict = tomli.load(f)
 
     # filename
-    OUTPUT_FILENAME = config_dict['filename']['output_filename']
+    OUTPUT_FILENAME = config_dict["filename"]["output_filename"]
 
     # creating build directory
 
-    print('Creating directory ./build')
+    print("Creating directory ./build")
     try:
-        os.mkdir('./build')
+        os.mkdir("./build")
     except:
-        print('Directory ./build already exists')
+        print("Directory ./build already exists")
     print()
 
     # copying .ily files to build directory
-    print('Creating directory ./build/includes')
+    print("Creating directory ./build/includes")
     try:
-        os.mkdir('./build/includes')
+        os.mkdir("./build/includes")
     except:
-        print('Directory ./build/includes already exists')
+        print("Directory ./build/includes already exists")
         print()
     finally:
-        shutil.copyfile('./src/includes/stylesheet.ily',
-                        './build/includes/stylesheet.ily',
-                        )
-    
+        shutil.copyfile(
+            "./src/includes/stylesheet.ily",
+            "./build/includes/stylesheet.ily",
+        )
+
     # generating files
     abjad.persist.as_pdf(
         lilypond_file,
-        f'./build/{OUTPUT_FILENAME}.pdf',
+        f"./build/{OUTPUT_FILENAME}.pdf",
     )
 
     # confirm build successful
-    if os.path.exists(f'./build/{OUTPUT_FILENAME}.pdf'):
-        print('Success')
+    if os.path.exists(f"./build/{OUTPUT_FILENAME}.pdf"):
+        print("Success")
     else:
-        print('Something went wrong, build was not successful')
+        print("Something went wrong, build was not successful")
     print()

@@ -5,9 +5,9 @@ import auxjad
 
 
 def add_large_time_signatures(
-        staves: List[abjad.Staff],
-        score: abjad.Score,
-    ) -> None:
+    staves: List[abjad.Staff],
+    score: abjad.Score,
+) -> None:
     r"""
     Optional function that adds large time signatures above the first staff of the score and removes
         time signatures from all staves.
@@ -19,7 +19,7 @@ def add_large_time_signatures(
     Returns
         None
     """
-    time_sig_staff = abjad.Staff(lilypond_type='TimeSig')
+    time_sig_staff = abjad.Staff(lilypond_type="TimeSig")
     time_signatures = auxjad.get.time_signature_list(
         staves[0],
         do_not_use_none=True,

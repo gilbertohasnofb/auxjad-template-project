@@ -15,8 +15,8 @@ def prettify_score(staves: List[abjad.Staff]) -> None:
     Returns
         None
     """
-    print('Prettifying score')
-    print('-----------------')
+    print("Prettifying score")
+    print("-----------------")
     print()
 
     with tqdm(total=len(staves)) as pbar:

@@ -23,30 +23,30 @@ def make_score():
         None
     """
     # reading config.toml file
-    with open('./src/config/config.toml', 'rb') as f:
+    with open("./src/config/config.toml", "rb") as f:
         config_dict = tomli.load(f)
 
     # Header
-    TITLE = config_dict['header']['title']
+    TITLE = config_dict["header"]["title"]
     print()
     print(TITLE)
-    print('=' * len(TITLE))
+    print("=" * len(TITLE))
     print()
 
     # Creating music
     staves, instrument_properties = create_staves()
     generate_and_add_segments_to_staves(staves)
     prettify_score(staves)
-    
+
     # Generating LilyPond file structure
     lilypond_file, score = generate_lilypond_file_structure(instrument_properties)
-    
+
     # Adding indicators and other text
     add_instrument_names(instrument_properties)
     add_initial_clefs(instrument_properties)
     add_tempo_and_final_tweaks(staves, score)
     add_large_time_signatures(staves, score)
-    
+
     # Outputting score
     stylesheet_generator()
     compile_ly_file(lilypond_file)

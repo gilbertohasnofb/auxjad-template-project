@@ -8,7 +8,7 @@ from .make_segment_C import make_segment_C
 def segment_factory() -> Generator:
     r"""
     Yields all individual segments that make out the composition.
-    
+
     Arguments:
         None
 

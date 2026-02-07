@@ -14,54 +14,54 @@ def stylesheet_generator() -> None:
         None
     """
     # reading config.toml file
-    with open('./src/config/config.toml', 'rb') as f:
+    with open("./src/config/config.toml", "rb") as f:
         config_dict = tomli.load(f)
 
     # Header
-    TITLE = config_dict['header']['title']
-    SUBTITLE = config_dict['header']['subtitle']
-    COMPOSER = config_dict['header']['composer']
-    DEDICATION = config_dict['header']['dedication']
-    POET = config_dict['header']['poet']
-    FONTSIZE = config_dict['header']['fontsize']
+    TITLE = config_dict["header"]["title"]
+    SUBTITLE = config_dict["header"]["subtitle"]
+    COMPOSER = config_dict["header"]["composer"]
+    DEDICATION = config_dict["header"]["dedication"]
+    POET = config_dict["header"]["poet"]
+    FONTSIZE = config_dict["header"]["fontsize"]
 
     # Layout
-    PAPER_SIZE = config_dict['layout']['paper_size']
-    STAFF_SIZE = config_dict['layout']['staff_size']
-    TOP_MARGIN = config_dict['layout']['top_margin']
-    BOTTOM_MARGIN = config_dict['layout']['bottom_margin']
-    LEFT_MARGIN = config_dict['layout']['left_margin']
-    RIGHT_MARGIN = config_dict['layout']['right_margin']
-    INDENT = config_dict['layout']['indent']
-    SHORT_INDENT = config_dict['layout']['short_indent']
-    MARKUP_SYSTEM_SPACING_BASIC_DISTANCE = (
-        config_dict['layout']['markup_system_spacing']['basic_distance']
-    )
-    MARKUP_SYSTEM_SPACING_MINIMUM_DISTANCE = (
-        config_dict['layout']['markup_system_spacing']['minimum_distance']
-    )
-    MARKUP_SYSTEM_SPACING_PADDING = config_dict['layout']['markup_system_spacing']['padding']
-    SYSTEM_SYSTEM_SPACING_MINIMUM_DISTANCE = (
-        config_dict['layout']['system_system_spacing']['minimum_distance']
-    )
-    PRINT_PAGE_NUMBER = config_dict['layout']['print_page_number']
-    RAGGED_LAST_BOTTOM = config_dict['layout']['ragged_last_bottom']
-    MIN_SYSTEMS_PER_PAGE = config_dict['layout']['min_systems_per_page']
-    MAX_SYSTEMS_PER_PAGE = config_dict['layout']['max_systems_per_page']
-    SYSTEM_SEPARATOR = config_dict['layout']['system_separator']
+    PAPER_SIZE = config_dict["layout"]["paper_size"]
+    STAFF_SIZE = config_dict["layout"]["staff_size"]
+    TOP_MARGIN = config_dict["layout"]["top_margin"]
+    BOTTOM_MARGIN = config_dict["layout"]["bottom_margin"]
+    LEFT_MARGIN = config_dict["layout"]["left_margin"]
+    RIGHT_MARGIN = config_dict["layout"]["right_margin"]
+    INDENT = config_dict["layout"]["indent"]
+    SHORT_INDENT = config_dict["layout"]["short_indent"]
+    MARKUP_SYSTEM_SPACING_BASIC_DISTANCE = config_dict["layout"]["markup_system_spacing"][
+        "basic_distance"
+    ]
+    MARKUP_SYSTEM_SPACING_MINIMUM_DISTANCE = config_dict["layout"]["markup_system_spacing"][
+        "minimum_distance"
+    ]
+    MARKUP_SYSTEM_SPACING_PADDING = config_dict["layout"]["markup_system_spacing"]["padding"]
+    SYSTEM_SYSTEM_SPACING_MINIMUM_DISTANCE = config_dict["layout"]["system_system_spacing"][
+        "minimum_distance"
+    ]
+    PRINT_PAGE_NUMBER = config_dict["layout"]["print_page_number"]
+    RAGGED_LAST_BOTTOM = config_dict["layout"]["ragged_last_bottom"]
+    MIN_SYSTEMS_PER_PAGE = config_dict["layout"]["min_systems_per_page"]
+    MAX_SYSTEMS_PER_PAGE = config_dict["layout"]["max_systems_per_page"]
+    SYSTEM_SEPARATOR = config_dict["layout"]["system_separator"]
 
     # Tempo
-    CUSTOM_TEMPO_MARKUP = config_dict['tempo']['custom_tempo_markup']
-    INITIAL_REFERENCE_NOTE = config_dict['tempo']['initial_reference_note']
-    INITIAL_TEMPO_MARKUP = config_dict['tempo']['initial_tempo_markup']
+    CUSTOM_TEMPO_MARKUP = config_dict["tempo"]["custom_tempo_markup"]
+    INITIAL_REFERENCE_NOTE = config_dict["tempo"]["initial_reference_note"]
+    INITIAL_TEMPO_MARKUP = config_dict["tempo"]["initial_tempo_markup"]
 
     # Style
-    ACCIDENTAL_STYLE = config_dict['style']['accidental_style']
-    FLAG_STYLE = config_dict['style']['flag_style']
-    TIMING_BASE_MOMENT = config_dict['style']['timing_base_moment']
-    BASE_SHORTEST_DURATION = config_dict['style']['base_shortest_duration']
-    HORIZONTAL_TUPLETS = config_dict['style']['horizontal_tuplets']
-    LARGE_TIME_SIGNATURES = config_dict['style']['large_time_signatures']
+    ACCIDENTAL_STYLE = config_dict["style"]["accidental_style"]
+    FLAG_STYLE = config_dict["style"]["flag_style"]
+    TIMING_BASE_MOMENT = config_dict["style"]["timing_base_moment"]
+    BASE_SHORTEST_DURATION = config_dict["style"]["base_shortest_duration"]
+    HORIZONTAL_TUPLETS = config_dict["style"]["horizontal_tuplets"]
+    LARGE_TIME_SIGNATURES = config_dict["style"]["large_time_signatures"]
 
     stylesheet_header = f"""
     \\include "articulate.ly"
@@ -224,7 +224,7 @@ def stylesheet_generator() -> None:
             \\remove "Time_signature_engraver"
         }}
     """
-    
+
     stylesheet_layout_block_end = f"""
     }}
     """
@@ -258,8 +258,8 @@ def stylesheet_generator() -> None:
     stylesheet_string += stylesheet_layout_block_end
     if CUSTOM_TEMPO_MARKUP:
         stylesheet_string += stylesheet_custom_tempo_markup
-    
+
     stylesheet_string = textwrap.dedent(stylesheet_string)
 
-    with open('./src/includes/stylesheet.ily', 'w+') as f:
+    with open("./src/includes/stylesheet.ily", "w+") as f:
         f.writelines(stylesheet_string)

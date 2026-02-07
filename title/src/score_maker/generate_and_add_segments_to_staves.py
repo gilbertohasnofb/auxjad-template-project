@@ -16,8 +16,8 @@ def generate_and_add_segments_to_staves(staves: List[abjad.Staff]) -> None:
     Returns
         None
     """
-    print('Generating musical segments')
-    print('---------------------------')
+    print("Generating musical segments")
+    print("---------------------------")
     print()
 
     list_of_segments = []
@@ -25,8 +25,8 @@ def generate_and_add_segments_to_staves(staves: List[abjad.Staff]) -> None:
         list_of_segments.append(segment)
     print()
 
-    print('Adding segments to staves')
-    print('-------------------------')
+    print("Adding segments to staves")
+    print("-------------------------")
     print()
 
     with tqdm(total=len(list_of_segments) * len(staves)) as pbar:

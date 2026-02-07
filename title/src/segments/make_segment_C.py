@@ -9,9 +9,10 @@ from .. import tools
 from .. import materials
 
 
-def make_segment_C(*,
-                   seed: Optional[int] = None,
-                   ) -> Tuple[abjad.Staff]:
+def make_segment_C(
+    *,
+    seed: Optional[int] = None,
+) -> Tuple[abjad.Staff]:
     r"""
     Makes segment C.
 
@@ -21,9 +22,9 @@ def make_segment_C(*,
     Returns:
         tuple of abjad.Staff's
     """
-    
-    print('* Generating Segment C')
-    
+
+    print("* Generating Segment C")
+
     if seed:
         random.seed(seed)
 

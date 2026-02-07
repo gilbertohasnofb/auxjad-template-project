@@ -17,31 +17,31 @@ def create_staves() -> Tuple[List[abjad.Staff], List[namedtuple]]:
         Tuple containing list of abjad.Staff's and list of namedtuple's
     """
     # reading config.toml file
-    with open('./src/config/config.toml', 'rb') as f:
+    with open("./src/config/config.toml", "rb") as f:
         config_dict = tomli.load(f)
 
-    STAFF_NAMES = config_dict['instrumentation']['staff_names']
-    CONTEXTS = config_dict['instrumentation']['contexts']
-    INSTRUMENT_NAMES = config_dict['instrumentation']['instrument_names']
-    SHORT_INSTRUMENT_NAMES = config_dict['instrumentation']['short_instrument_names']
-    INITIAL_CLEFS = config_dict['instrumentation']['initial_clefs']
+    STAFF_NAMES = config_dict["instrumentation"]["staff_names"]
+    CONTEXTS = config_dict["instrumentation"]["contexts"]
+    INSTRUMENT_NAMES = config_dict["instrumentation"]["instrument_names"]
+    SHORT_INSTRUMENT_NAMES = config_dict["instrumentation"]["short_instrument_names"]
+    INITIAL_CLEFS = config_dict["instrumentation"]["initial_clefs"]
 
     # Defining named tuple
     InstrumentProperties = namedtuple(
-        'Staff', 
+        "Staff",
         [
-            'container',
-            'instrument_name',
-            'short_instrument_name',
-            'initial_clef',
-            'context',
-        ]
+            "container",
+            "instrument_name",
+            "short_instrument_name",
+            "initial_clef",
+            "context",
+        ],
     )
 
     # creating staves and instrument_properties
     staves = []
     instrument_properties = []
-    
+
     for index, staff_name in enumerate(STAFF_NAMES):
         # single staff instruments, i.e. not in a StaffGroup
         if not isinstance(staff_name, list):

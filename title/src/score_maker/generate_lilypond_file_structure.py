@@ -5,8 +5,8 @@ import abjad
 
 
 def generate_lilypond_file_structure(
-        instrument_properties: List[namedtuple],
-    ) -> Tuple[abjad.LilyPondFile, abjad.Score]:
+    instrument_properties: List[namedtuple],
+) -> Tuple[abjad.LilyPondFile, abjad.Score]:
     r"""
     Creates the structure of the LilyPond file
 
@@ -17,29 +17,29 @@ def generate_lilypond_file_structure(
     Returns
         Tuple containing an abjad.LilyPondFile and an abjad.Score
     """
-    print('Generating LilyPond file structure')
-    print('----------------------------------')
+    print("Generating LilyPond file structure")
+    print("----------------------------------")
     print()
 
     # creating score and appending instruments
     score = abjad.Score()
     for instrument in instrument_properties:
         score.append(instrument.container)
-    
+
     # creating blocks and including stylesheet
-    score_block = abjad.Block(name='score')
-    layout_block = abjad.Block(name='layout')
-    midi_block = abjad.Block(name='midi')
-    midi_block.items.append(r'\tempo 4 = 60')  # WARNING: must change tempo in stylesheet too!
+    score_block = abjad.Block(name="score")
+    layout_block = abjad.Block(name="layout")
+    midi_block = abjad.Block(name="midi")
+    midi_block.items.append(r"\tempo 4 = 60")  # WARNING: must change tempo in stylesheet too!
     score_block.items.append(score)
     score_block.items.append(layout_block)
     score_block.items.append(midi_block)
     lilypond_file = abjad.LilyPondFile(
         items=[score_block],
-        includes=['./includes/stylesheet.ily'],
+        includes=["./includes/stylesheet.ily"],
     )
 
-    print('LilyPondFile generated')
+    print("LilyPondFile generated")
     print()
 
     return lilypond_file, score
