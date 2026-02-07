@@ -261,5 +261,5 @@ def stylesheet_generator() -> None:
 
     stylesheet_string = textwrap.dedent(stylesheet_string)
 
-    with open("./src/includes/stylesheet.ily", "w+") as f:
+    with open("./build/includes/stylesheet.ily", "w+") as f:
         f.writelines(stylesheet_string)

@@ -48,5 +48,4 @@ def make_score():
     add_large_time_signatures(staves, score)
 
     # Outputting score
-    stylesheet_generator()
     compile_ly_file(lilypond_file)

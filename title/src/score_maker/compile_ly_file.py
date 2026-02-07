@@ -4,6 +4,8 @@ import shutil
 import abjad
 import tomli
 
+from .stylesheet_generator import stylesheet_generator
+
 
 def compile_ly_file(
     lilypond_file: abjad.LilyPondFile,
@@ -45,10 +47,7 @@ def compile_ly_file(
         print("- Directory ./build/includes already exists")
         print()
     finally:
-        shutil.copyfile(
-            "./src/includes/stylesheet.ily",
-            "./build/includes/stylesheet.ily",
-        )
+        stylesheet_generator()
 
     # generating files
     abjad.persist.as_pdf(
