@@ -1,11 +1,9 @@
-from typing import List
-
 import abjad
 import auxjad
 from tqdm import tqdm
 
 
-def prettify_score(staves: List[abjad.Staff]) -> None:
+def prettify_score(staves: list[abjad.Staff]) -> None:
     r"""
     Prettifies score (e.g. remove repeated time signatures, repeated dynamics, etc.)
 

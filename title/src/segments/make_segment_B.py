@@ -1,5 +1,5 @@
 import random
-from typing import Optional, Tuple
+from typing import Optional
 
 import abjad
 import auxjad
@@ -12,7 +12,7 @@ from .. import materials
 def make_segment_B(
     *,
     seed: Optional[int] = None,
-) -> Tuple[abjad.Staff]:
+) -> tuple[abjad.Staff]:
     r"""
     Makes segment B.
 
