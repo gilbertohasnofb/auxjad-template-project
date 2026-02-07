@@ -1,10 +1,9 @@
 from collections import namedtuple
-from typing import List
 
 import abjad
 
 
-def add_initial_clefs(instrument_properties: List[namedtuple]) -> None:
+def add_initial_clefs(instrument_properties: list[namedtuple]) -> None:
     r"""
     Adds initial clefs to all
 

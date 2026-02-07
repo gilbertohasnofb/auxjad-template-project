@@ -1,11 +1,10 @@
 from collections import namedtuple
-from typing import Tuple, List
 
 import abjad
 import tomli
 
 
-def create_staves() -> Tuple[List[abjad.Staff], List[namedtuple]]:
+def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
     r"""
     Creates list of staves and list of instrument properties (staves, instrument names, clefs,
         etc.).

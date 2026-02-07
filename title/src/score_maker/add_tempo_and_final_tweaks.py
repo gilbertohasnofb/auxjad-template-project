@@ -1,10 +1,8 @@
-from typing import List
-
 import abjad
 
 
 def add_tempo_and_final_tweaks(
-    staves: List[abjad.Staff],
+    staves: list[abjad.Staff],
     score: abjad.Score,
 ) -> None:
     r"""

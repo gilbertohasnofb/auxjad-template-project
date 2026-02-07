@@ -1,10 +1,9 @@
 from collections import namedtuple
-from typing import List
 
 import abjad
 
 
-def add_instrument_names(instrument_properties: List[namedtuple]) -> None:
+def add_instrument_names(instrument_properties: list[namedtuple]) -> None:
     r"""
     Adds full and short instrument names to all staves and staff groups.
 

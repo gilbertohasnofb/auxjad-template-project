@@ -1,11 +1,9 @@
-from typing import List
-
 import abjad
 import auxjad
 
 
 def add_large_time_signatures(
-    staves: List[abjad.Staff],
+    staves: list[abjad.Staff],
     score: abjad.Score,
 ) -> None:
     r"""

@@ -1,12 +1,10 @@
-from typing import List
-
 import abjad
 from tqdm import tqdm
 
 from .. import segments
 
 
-def generate_and_add_segments_to_staves(staves: List[abjad.Staff]) -> None:
+def generate_and_add_segments_to_staves(staves: list[abjad.Staff]) -> None:
     r"""
     Generates musical materials from segments and adds them to the staves.
 

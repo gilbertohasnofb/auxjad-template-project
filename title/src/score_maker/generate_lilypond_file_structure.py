@@ -1,12 +1,11 @@
 from collections import namedtuple
-from typing import Tuple, List
 
 import abjad
 
 
 def generate_lilypond_file_structure(
-    instrument_properties: List[namedtuple],
-) -> Tuple[abjad.LilyPondFile, abjad.Score]:
+    instrument_properties: list[namedtuple],
+) -> tuple[abjad.LilyPondFile, abjad.Score]:
     r"""
     Creates the structure of the LilyPond file
 
