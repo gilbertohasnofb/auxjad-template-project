@@ -109,4 +109,4 @@ venv.bak/
 .mypy_cache/
 
 # including score build for the sake of this template example
-!title/src/build
+!title/build

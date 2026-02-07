@@ -54,7 +54,7 @@
     \override Accidental.hide-tied-accidental-after-break = ##t
 
     % flag style
-    \override Score.Flag.stencil = #default
+    \override Score.Flag.stencil = #flat-flag
 
     % time signature style
     \numericTimeSignature
@@ -157,7 +157,7 @@ tempo-markup = {
     \tempo \markup{
         \concat{
             \small{
-                \override #'(flag-style . default)
+                \override #'(flag-style . flat-flag)
                 \general-align #Y #DOWN \note {8} #1
                 \larger " = ca. 60"
             }

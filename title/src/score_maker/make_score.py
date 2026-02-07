@@ -12,7 +12,7 @@ from .stylesheet_generator import stylesheet_generator
 from .compile_ly_file import compile_ly_file
 
 
-def main():
+def make_score():
     r"""
     Generates the music and creates the final score.
 

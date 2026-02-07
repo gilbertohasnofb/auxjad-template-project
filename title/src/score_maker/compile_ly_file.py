@@ -33,33 +33,33 @@ def compile_ly_file(
 
     # creating build directory
 
-    print('Creating directory ./src/build')
+    print('Creating directory ./build')
     try:
-        os.mkdir('./src/build')
+        os.mkdir('./build')
     except:
-        print('Directory ./src/build already exists')
+        print('Directory ./build already exists')
     print()
 
     # copying .ily files to build directory
-    print('Creating directory ./src/build/includes')
+    print('Creating directory ./build/includes')
     try:
-        os.mkdir('./src/build/includes')
+        os.mkdir('./build/includes')
     except:
-        print('Directory ./src/build/includes already exists')
+        print('Directory ./build/includes already exists')
         print()
     finally:
         shutil.copyfile('./src/includes/stylesheet.ily',
-                        './src/build/includes/stylesheet.ily',
+                        './build/includes/stylesheet.ily',
                         )
     
     # generating files
     abjad.persist.as_pdf(
         lilypond_file,
-        f'./src/build/{OUTPUT_FILENAME}.pdf',
+        f'./build/{OUTPUT_FILENAME}.pdf',
     )
 
     # confirm build successful
-    if os.path.exists(f'./src/build/{OUTPUT_FILENAME}.pdf'):
+    if os.path.exists(f'./build/{OUTPUT_FILENAME}.pdf'):
         print('Success')
     else:
         print('Something went wrong, build was not successful')

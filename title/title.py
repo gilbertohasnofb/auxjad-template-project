@@ -1,5 +1,5 @@
-from src.score_maker import main
+from src.score_maker import make_score
 
 
 if __name__ == '__main__':
-    main()
+    make_score()
