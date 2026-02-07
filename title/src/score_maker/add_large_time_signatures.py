@@ -8,11 +8,12 @@ def add_large_time_signatures(
 ) -> None:
     r"""
     Optional function that adds large time signatures above the first staff of the score and removes
-        time signatures from all staves.
+        time signatures from all staves. The option ``large_time_signature`` under ``[style]`` in
+        ``config.toml`` must be set to ``true`` for this function to work.
 
     Args:
-        staves: list of abjad.Staff's
-        score: abjad.Score created by generate_lilypond_file_structure()
+        staves: ``list`` of ``abjad.Staff``'s.
+        score: ``abjad.Score`` created by ``generate_lilypond_file_structure()``.
 
     Returns:
         None

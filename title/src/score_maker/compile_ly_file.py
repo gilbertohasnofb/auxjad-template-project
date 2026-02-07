@@ -13,9 +13,7 @@ def compile_ly_file(
         etc.).
 
     Args:
-        lilypond_file: abjad.LilyPondFile created by generate_lilypond_file_structure()
-        composition_filename: str with the filename of the composition
-        root_directory: str with the composition root directory
+        lilypond_file: ``abjad.LilyPondFile`` created by ``generate_lilypond_file_structure()``.
 
     Returns:
         None
@@ -32,20 +30,19 @@ def compile_ly_file(
     OUTPUT_FILENAME = config_dict["filename"]["output_filename"]
 
     # creating build directory
-
-    print("Creating directory ./build")
+    print("- Creating directory ./build")
     try:
         os.mkdir("./build")
     except:
-        print("Directory ./build already exists")
+        print("- Directory ./build already exists")
     print()
 
     # copying .ily files to build directory
-    print("Creating directory ./build/includes")
+    print("- Creating directory ./build/includes")
     try:
         os.mkdir("./build/includes")
     except:
-        print("Directory ./build/includes already exists")
+        print("- Directory ./build/includes already exists")
         print()
     finally:
         shutil.copyfile(

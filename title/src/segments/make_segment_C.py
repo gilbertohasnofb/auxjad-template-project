@@ -5,40 +5,45 @@ import abjad
 import auxjad
 from tqdm import tqdm
 
-from .. import tools
 from .. import materials
+from .. import tools
 
 
 def make_segment_C(
     *,
+    window_size: abjad.Duration,
+    step_size: abjad.Duration,
     seed: Optional[int] = None,
 ) -> tuple[abjad.Staff]:
     r"""
     Makes segment C.
 
     Args:
-        seed: optional integer for random seed
+        window_size: ``abjad.Duration`` with the length of the window size of the ``WindowLooper``.
+        step_size: ``abjad.Duration`` with the step size of the ``WindowLooper``.
+        seed: optional ``int`` for random seed.
 
     Returns:
-        tuple of abjad.Staff's
+        ``tuple`` of ``abjad.Staff``'s.
     """
-
-    print("* Generating Segment C")
-
     if seed:
         random.seed(seed)
 
-    segment_C_music = [
-        abjad.Staff(r"a''4 g''2 f''4 e''2 a''4 g''2 f''4 e''2"),
-        abjad.Staff(r"r2. <f'' a''>2. r2. <f'' a''>2."),
-        abjad.Staff(r"<a' e' d'>1 r2 <a' e' d'>1 r2"),
-        abjad.Staff(r"r2 <f a>1  ~ <f a>2 <f a>1 "),
-        abjad.Staff(r"a''4 g''2 f''4 e''2 a''4 g''2 f''4 e''2"),
-        abjad.Staff(r"d1. d1."),
-        abjad.Staff(r"d,2 r1 d,2 r1"),
-    ]
+    if not isinstance(window_size, abjad.Duration):
+        window_size = abjad.Duration(window_size)
 
-    for staff in segment_C_music:
-        abjad.attach(abjad.TimeSignature((3, 2)), abjad.select(staff).leaf(0))
+    if not isinstance(step_size, abjad.Duration):
+        step_size = abjad.Duration(step_size)
+
+    material_C_staves = materials.make_material_C(seed=seed)
+
+    segment_C_music = []
+    for staff in material_C_staves:
+        looper = auxjad.WindowLooper(
+            staff,
+            window_size=window_size,
+            step_size=step_size,
+        )
+        segment_C_music.append(looper.output_all())
 
     return segment_C_music

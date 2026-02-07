@@ -39,7 +39,8 @@
     timing_base_moment = '1/4'
     base_shortest_duration = '1/32'
     horizontal_tuplets = true
-    large_time_signatures = true  # 
+    large_time_signatures = true  # the function add_large_time_signatures() must then be called in
+                                  # make_score(), otherwise no time signature will be output
 
 [instrumentation]
     staff_names = [
@@ -72,3 +73,22 @@
         ['treble', 'bass'],
         'bass',
     ]
+
+[segments]
+
+[segments.segment_A]
+    seed = 4959297809154048
+    window_size = [3, 4]
+    step_size = [1, 4]
+    include_double_barline = true
+
+[segments.segment_B]
+    seed = 9281032389918721
+    window_size = [2, 4]
+    step_size = [1, 4]
+    include_double_barline = true
+
+[segments.segment_C]
+    seed = 5053734054789120
+    window_size = [4, 4]
+    step_size = [1, 4]

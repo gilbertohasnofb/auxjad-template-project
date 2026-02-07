@@ -5,40 +5,53 @@ import abjad
 import auxjad
 from tqdm import tqdm
 
-from .. import tools
 from .. import materials
+from .. import tools
 
 
 def make_segment_B(
     *,
+    window_size: abjad.Duration,
+    step_size: abjad.Duration,
+    include_double_barline: bool,
     seed: Optional[int] = None,
 ) -> tuple[abjad.Staff]:
     r"""
     Makes segment B.
 
     Args:
-        seed: optional integer for random seed
+        window_size: ``abjad.Duration`` with the length of the window size of the ``WindowLooper``.
+        step_size: ``abjad.Duration`` with the step size of the ``WindowLooper``.
+        include_double_barline: if ``True``, double bar lines are added at the end of the segment.
+        seed: optional ``int`` for random seed.
 
     Returns:
-        tuple of abjad.Staff's
+        ``tuple`` of ``abjad.Staff``'s.
     """
-
-    print("* Generating Segment B")
-
     if seed:
         random.seed(seed)
 
-    segment_B_music = [
-        abjad.Staff(r"\times 2/3 {ef'4 gf'4 af'4 ~} af'4 \times 2/3 {ef'4 gf'4 af'4 ~} af'4"),
-        abjad.Staff(r"<df''' ef'''>2. <df''' ef'''>2."),
-        abjad.Staff(r"r4 gf'2 r4 gf'2"),
-        abjad.Staff(r"<df, ef,>2. <df, ef,>2."),
-        abjad.Staff(r"gf'2 df'4 gf'2 df'4"),
-        abjad.Staff(r"R1 * 3/4 R1 * 3/4"),
-        abjad.Staff(r"ef2. ef2."),
-    ]
+    if not isinstance(window_size, abjad.Duration):
+        window_size = abjad.Duration(window_size)
 
-    for staff in segment_B_music:
-        abjad.attach(abjad.TimeSignature((3, 4)), abjad.select(staff).leaf(0))
+    if not isinstance(step_size, abjad.Duration):
+        step_size = abjad.Duration(step_size)
+
+    material_B_staves = materials.make_material_B(seed=seed)
+
+    segment_B_music = []
+    for staff in material_B_staves:
+        looper = auxjad.WindowLooper(
+            staff,
+            window_size=window_size,
+            step_size=step_size,
+        )
+        staff_music = looper.output_all()
+        if include_double_barline:
+            abjad.attach(
+                abjad.BarLine("||"),
+                abjad.select(staff_music).leaf(-1),
+            )
+        segment_B_music.append(staff_music)
 
     return segment_B_music

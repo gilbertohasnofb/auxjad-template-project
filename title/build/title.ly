@@ -13,14 +13,22 @@
     <<
         \new TimeSig
         {
-            \time 4/4
-            r1
             \time 3/4
             r2.
             r2.
-            \time 3/2
-            r1.
-            r1.
+            r2.
+            r2.
+            \time 2/4
+            r2
+            r2
+            r2
+            \time 4/4
+            r1
+            r1
+            r1
+            r1
+            r1
+            r1
         }
         \context Staff = "Flute"
         {
@@ -28,39 +36,66 @@
             \markup { Flute }
             \set Staff.shortInstrumentName =
             \markup { Fl. }
-            \time 4/4
+            \time 3/4
             \clef "treble"
             \tempo-markup
-            c''4
-            d''4
-            e''4
             f''4
-            \times 2/3
-            {
-                \time 3/4
-                ef'4
-                gf'4
-                af'4
-                ~
-            }
-            af'4
-            \times 2/3
-            {
-                ef'4
-                gf'4
-                af'4
-                ~
-            }
-            af'4
-            \time 3/2
-            a''4
-            g''2
+            cs''4
             f''4
-            e''2
-            a''4
-            g''2
+            cs''4
             f''4
-            e''2
+            b''4
+            f''4
+            b''4
+            r4
+            b''4
+            r2
+            \bar "||"
+            \time 2/4
+            b''16
+            g'''16
+            a''16
+            bf'''16
+            g'''16
+            cs''16
+            b'''16
+            g'''16
+            g'''16
+            cs''16
+            b'''16
+            g'''16
+            a'''16
+            bf''16
+            fs'''16
+            g'''16
+            a'''16
+            bf''16
+            fs'''16
+            g'''16
+            r4
+            \bar "||"
+            \time 4/4
+            ef'''4
+            a'''4
+            fs'''4
+            ef'''4
+            a'''4
+            fs'''4
+            ef'''4
+            b'''4
+            fs'''4
+            ef'''4
+            b'''4
+            bf'''4
+            ef'''4
+            b'''4
+            bf'''4
+            r4
+            b'''4
+            bf'''4
+            r2
+            bf'''4
+            r2.
             \bar "|."
         }
         \context PianoStaff = "Piano"
@@ -71,58 +106,146 @@
                 \markup { Piano }
                 \set PianoStaff.shortInstrumentName =
                 \markup { Pno }
-                \time 4/4
+                \time 3/4
                 \clef "treble^8"
                 \tempo-markup
-                r8
-                c'''8
+                b''4
+                a''4
+                g''4
+                a''4
+                g''4
+                fs''4
+                g''4
+                fs''4
+                r4
+                fs''4
+                r2
+                \bar "||"
+                \time 2/4
+                e''16
+                fs'''16
+                g'''16
+                af''16
+                cs''16
+                c''''16
+                bf'''16
+                cs'''16
+                cs''16
+                c''''16
+                bf'''16
+                cs'''16
+                g'''16
+                c''''16
+                cs'''16
+                fs''16
+                g'''16
+                c''''16
+                cs'''16
+                fs''16
+                r4
+                \bar "||"
+                \time 4/4
+                fs'''4
+                c'''4
+                af'''4
+                a'''4
+                c'''4
+                af'''4
+                a'''4
                 d'''4
-                e'''4
-                f'''4
-                \time 3/4
-                <df''' ef'''>2.
-                <df''' ef'''>2.
-                \time 3/2
+                af'''4
+                a'''4
+                d'''4
+                af'''4
+                a'''4
+                d'''4
+                af'''4
+                r4
+                d'''4
+                af'''4
+                r2
+                af'''4
                 r2.
-                <f'' a''>2.
-                r2.
-                <f'' a''>2.
                 \bar "|."
             }
             \context Staff = "Piano_Middle"
             {
-                \time 4/4
+                \time 3/4
                 \clef "treble"
                 \tempo-markup
-                c'1
-                \time 3/4
+                f'2
+                af'4
+                f'4
+                af'2
+                af'2
                 r4
-                gf'2
+                af'4
+                r2
+                \bar "||"
+                \time 2/4
+                r2
+                r2
+                r2
+                \bar "||"
+                \time 4/4
+                c'''2
+                ef''2
+                c'''4
+                ef''2
+                ef''4
+                ef''2
+                ef''2
+                ef''4
+                ef''2
                 r4
-                gf'2
-                \time 3/2
-                <d' e' a'>1
+                ef''2
                 r2
-                <d' e' a'>1
-                r2
+                ef''4
+                r2.
                 \bar "|."
             }
             \context Staff = "Piano_Lower"
             {
-                \time 4/4
+                \time 3/4
                 \clef "bass"
                 \tempo-markup
-                c2
-                g2
-                \time 3/4
-                <df, ef,>2.
-                <df, ef,>2.
-                \time 3/2
+                af2
+                bf4
+                af4
+                bf2
+                bf2
+                r4
+                bf4
                 r2
-                <f a>1
-                ~
-                <f a>2
-                <f a>1
+                \bar "||"
+                \time 2/4
+                ef8
+                cs,8
+                d8
+                d8
+                d8
+                d8
+                c'8
+                bf,8
+                c'8
+                bf,8
+                r4
+                \bar "||"
+                \time 4/4
+                fs2
+                cs2
+                fs4
+                cs2
+                c4
+                cs2
+                c2
+                cs4
+                c2
+                r4
+                c2
+                r2
+                c4
+                r2.
                 \bar "|."
             }
         >>
@@ -134,42 +257,69 @@
                 \markup { Harp }
                 \set GrandStaff.shortInstrumentName =
                 \markup { Hp. }
-                \time 4/4
+                \time 3/4
                 \clef "treble"
                 \tempo-markup
-                c''4
-                d''4
-                e''4
-                f''4
-                \time 3/4
-                gf'2
-                df'4
-                gf'2
-                df'4
-                \time 3/2
-                a''4
-                g''2
-                f''4
-                e''2
-                a''4
-                g''2
-                f''4
-                e''2
+                a'2
+                bf'4
+                a'4
+                bf'2
+                bf'2
+                r4
+                bf'4
+                r2
+                \bar "||"
+                \time 2/4
+                r2
+                r2
+                r2
+                \bar "||"
+                \time 4/4
+                g1
+                g1
+                g1
+                g2.
+                r4
+                g2
+                r2
+                g4
+                r2.
                 \bar "|."
             }
             \context Staff = "Harp_Lower"
             {
-                \time 4/4
+                \time 3/4
                 \clef "bass"
                 \tempo-markup
+                ef2
+                fs4
+                ef4
+                fs2
+                fs2
+                r4
+                fs4
+                r2
+                \bar "||"
+                \time 2/4
+                r2
+                r2
+                r2
+                \bar "||"
+                \time 4/4
+                ef,2
+                a,2
+                ef,4
+                a,2
+                c,4
+                a,2
                 c,2
-                g,2
-                \time 3/4
-                R1 * 3/4
-                R1 * 3/4
-                \time 3/2
-                d1.
-                d1.
+                a,4
+                c,2
+                r4
+                c,2
+                r2
+                c,4
+                r2.
                 \bar "|."
             }
         >>
@@ -179,18 +329,33 @@
             \markup { Cello }
             \set Staff.shortInstrumentName =
             \markup { Vcl. }
-            \time 4/4
+            \time 3/4
             \clef "bass"
             \tempo-markup
-            c,1
-            \time 3/4
-            ef2.
-            ef2.
-            \time 3/2
-            d,2
-            r1
-            d,2
-            r1
+            c'2
+            cs4
+            c'4
+            cs2
+            cs2
+            r4
+            cs4
+            r2
+            \bar "||"
+            \time 2/4
+            r2
+            r2
+            r2
+            \bar "||"
+            \time 4/4
+            fs,1
+            fs,1
+            fs,1
+            fs,2.
+            r4
+            fs,2
+            r2
+            fs,4
+            r2.
             \bar "|."
         }
     >>

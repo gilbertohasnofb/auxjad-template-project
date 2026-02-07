@@ -1,4 +1,5 @@
 import abjad
+import tomli
 from tqdm import tqdm
 
 from .. import segments
@@ -9,7 +10,7 @@ def generate_and_add_segments_to_staves(staves: list[abjad.Staff]) -> None:
     Generates musical materials from segments and adds them to the staves.
 
     Args:
-        staves: list of abjad.Staff's
+        staves: ``list`` of ``abjad.Staff``'s.
 
     Returns:
         None
@@ -18,8 +19,15 @@ def generate_and_add_segments_to_staves(staves: list[abjad.Staff]) -> None:
     print("---------------------------")
     print()
 
+    with open("./src/config/config.toml", "rb") as f:
+        config_dict = tomli.load(f)
+
+    SEGMENT_PARAMS = config_dict["segments"]
+
     list_of_segments = []
-    for segment in segments.segment_factory():
+    for segment_name, segment_maker in zip(SEGMENT_PARAMS.keys(), segments.list_of_segments):
+        print(f"- Generating: {segment_name}")
+        segment = segment_maker(**SEGMENT_PARAMS[segment_name])
         list_of_segments.append(segment)
     print()
 

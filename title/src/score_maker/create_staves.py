@@ -13,7 +13,7 @@ def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
         None
 
     Returns:
-        Tuple containing list of abjad.Staff's and list of namedtuple's
+        ``Tuple`` containing ``list`` of ``abjad.Staff``'s and ``list`` of ``namedtuple``'s.
     """
     # reading config.toml file
     with open("./src/config/config.toml", "rb") as f:
