@@ -17,7 +17,7 @@ def compile_ly_file(
         composition_filename: str with the filename of the composition
         root_directory: str with the composition root directory
 
-    Returns
+    Returns:
         None
     """
     print("Compiling .ly file")

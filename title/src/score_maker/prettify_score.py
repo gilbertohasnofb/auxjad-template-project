@@ -10,7 +10,7 @@ def prettify_score(staves: list[abjad.Staff]) -> None:
     Arguments:
         staves: list of abjad.Staff's
 
-    Returns
+    Returns:
         None
     """
     print("Prettifying score")

@@ -12,7 +12,7 @@ def add_tempo_and_final_tweaks(
         staves: list of abjad.Staff's
         score: abjad.Score created by generate_lilypond_file_structure()
 
-    Returns
+    Returns:
         None
     """
     # tempo markup (defined as a LilyPond variable in stylesheet)

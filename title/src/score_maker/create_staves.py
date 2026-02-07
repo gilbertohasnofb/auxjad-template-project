@@ -12,7 +12,7 @@ def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
     Arguments:
         None
 
-    Returns
+    Returns:
         Tuple containing list of abjad.Staff's and list of namedtuple's
     """
     # reading config.toml file

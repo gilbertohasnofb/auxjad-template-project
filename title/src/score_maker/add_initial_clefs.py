@@ -13,7 +13,7 @@ def add_initial_clefs(instrument_properties: list[namedtuple]) -> None:
             create_staves(). initial_clef must be a str for single staves, and list of str for staff
             groups
 
-    Returns
+    Returns:
         None
     """
     for instrument in instrument_properties:

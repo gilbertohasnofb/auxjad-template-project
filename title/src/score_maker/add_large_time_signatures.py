@@ -14,7 +14,7 @@ def add_large_time_signatures(
         staves: list of abjad.Staff's
         score: abjad.Score created by generate_lilypond_file_structure()
 
-    Returns
+    Returns:
         None
     """
     time_sig_staff = abjad.Staff(lilypond_type="TimeSig")

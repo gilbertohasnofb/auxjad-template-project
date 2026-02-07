@@ -11,7 +11,7 @@ def generate_and_add_segments_to_staves(staves: list[abjad.Staff]) -> None:
     Arguments:
         staves: list of abjad.Staff's
 
-    Returns
+    Returns:
         None
     """
     print("Generating musical segments")
