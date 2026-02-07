@@ -16,7 +16,7 @@ def make_score():
     r"""
     Generates the music and creates the final score.
 
-    Arguments:
+    Args:
         None
 
     Returns:

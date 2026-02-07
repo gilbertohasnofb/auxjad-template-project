@@ -16,7 +16,7 @@ def make_segment_C(
     r"""
     Makes segment C.
 
-    Arguments:
+    Args:
         seed: optional integer for random seed
 
     Returns:

@@ -16,7 +16,7 @@ def make_segment_B(
     r"""
     Makes segment B.
 
-    Arguments:
+    Args:
         seed: optional integer for random seed
 
     Returns:

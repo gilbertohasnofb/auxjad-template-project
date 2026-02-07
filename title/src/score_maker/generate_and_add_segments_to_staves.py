@@ -8,7 +8,7 @@ def generate_and_add_segments_to_staves(staves: list[abjad.Staff]) -> None:
     r"""
     Generates musical materials from segments and adds them to the staves.
 
-    Arguments:
+    Args:
         staves: list of abjad.Staff's
 
     Returns:

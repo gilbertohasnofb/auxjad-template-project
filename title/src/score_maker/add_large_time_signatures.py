@@ -10,7 +10,7 @@ def add_large_time_signatures(
     Optional function that adds large time signatures above the first staff of the score and removes
         time signatures from all staves.
 
-    Arguments:
+    Args:
         staves: list of abjad.Staff's
         score: abjad.Score created by generate_lilypond_file_structure()
 

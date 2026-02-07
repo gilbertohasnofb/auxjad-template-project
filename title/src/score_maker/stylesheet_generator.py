@@ -7,7 +7,7 @@ def stylesheet_generator() -> None:
     r"""
     Generates the stylesheet to be included in the final score.
 
-    Arguments:
+    Args:
         None
 
     Returns:

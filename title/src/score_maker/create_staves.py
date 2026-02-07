@@ -9,7 +9,7 @@ def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
     Creates list of staves and list of instrument properties (staves, instrument names, clefs,
         etc.).
 
-    Arguments:
+    Args:
         None
 
     Returns:

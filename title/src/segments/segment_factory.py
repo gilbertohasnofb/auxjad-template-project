@@ -9,7 +9,7 @@ def segment_factory() -> Generator:
     r"""
     Yields all individual segments that make out the composition.
 
-    Arguments:
+    Args:
         None
 
     Returns:

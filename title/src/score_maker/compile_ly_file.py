@@ -12,7 +12,7 @@ def compile_ly_file(
     Creates list of staves and list of instrument properties (staves, instrument names, clefs,
         etc.).
 
-    Arguments:
+    Args:
         lilypond_file: abjad.LilyPondFile created by generate_lilypond_file_structure()
         composition_filename: str with the filename of the composition
         root_directory: str with the composition root directory

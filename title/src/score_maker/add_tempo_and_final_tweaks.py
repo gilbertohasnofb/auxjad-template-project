@@ -8,7 +8,7 @@ def add_tempo_and_final_tweaks(
     r"""
     Adds tempo marking, final bar line, and other final tweaks to the staves.
 
-    Arguments:
+    Args:
         staves: list of abjad.Staff's
         score: abjad.Score created by generate_lilypond_file_structure()
 
