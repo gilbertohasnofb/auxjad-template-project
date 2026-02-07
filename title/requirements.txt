@@ -1,3 +1,4 @@
 abjad==3.4
 auxjad>=1.0.0
 tomli==2.2.1
+tqdm==4.67.1
