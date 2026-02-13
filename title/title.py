@@ -1,4 +1,4 @@
-from src.score_maker import make_score
+from src.score_maker import score_maker
 
 if __name__ == "__main__":
-    make_score()
+    score_maker()

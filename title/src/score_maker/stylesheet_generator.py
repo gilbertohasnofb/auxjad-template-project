@@ -245,7 +245,7 @@ def stylesheet_generator() -> None:
     }}
     """
 
-    # joining strings
+    # Joining all strings
     stylesheet_string = ""
     stylesheet_string += stylesheet_header
     stylesheet_string += stylesheet_paper_size

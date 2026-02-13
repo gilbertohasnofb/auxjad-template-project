@@ -21,7 +21,6 @@
             \time 2/4
             r2
             r2
-            r2
             \time 4/4
             r1
             r1
@@ -39,62 +38,57 @@
             \time 3/4
             \clef "treble"
             \tempo-markup
-            f''4
+            a''4
+            a''4
             cs''4
-            f''4
+            a''4
             cs''4
-            f''4
-            b''4
-            f''4
-            b''4
+            d''4
+            cs''4
+            d''4
             r4
-            b''4
+            d''4
             r2
             \bar "||"
             \time 2/4
-            b''16
-            g'''16
+            fs'''16
+            c'''16
+            af'''16
+            af''16
+            cs'''16
+            fs'''16
             a''16
-            bf'''16
-            g'''16
-            cs''16
-            b'''16
-            g'''16
-            g'''16
-            cs''16
-            b'''16
-            g'''16
-            a'''16
-            bf''16
+            ef''16
+            af'''16
+            af''16
+            cs'''16
             fs'''16
+            a''16
+            ef''16
+            ef''16
             g'''16
-            a'''16
-            bf''16
-            fs'''16
-            g'''16
-            r4
             \bar "||"
             \time 4/4
-            ef'''4
-            a'''4
-            fs'''4
-            ef'''4
-            a'''4
-            fs'''4
-            ef'''4
-            b'''4
-            fs'''4
-            ef'''4
-            b'''4
+            c''''4
+            e'''4
             bf'''4
-            ef'''4
-            b'''4
+            c''''4
+            e'''4
             bf'''4
+            c''''4
+            af'''4
+            bf'''4
+            c''''4
+            af'''4
+            c'''4
+            c''''4
+            af'''4
+            c'''4
             r4
-            b'''4
-            bf'''4
+            af'''4
+            c'''4
             r2
-            bf'''4
+            c'''4
             r2.
             \bar "|."
         }
@@ -110,61 +104,56 @@
                 \clef "treble^8"
                 \tempo-markup
                 b''4
-                a''4
-                g''4
-                a''4
-                g''4
-                fs''4
-                g''4
-                fs''4
+                f''4
+                c''4
+                f''4
+                c''4
+                c'''4
+                c''4
+                c'''4
                 r4
-                fs''4
+                c'''4
                 r2
                 \bar "||"
                 \time 2/4
-                e''16
-                fs'''16
-                g'''16
+                b'''16
+                e'''16
+                af''16
+                b''16
+                g''16
                 af''16
                 cs''16
-                c''''16
-                bf'''16
-                cs'''16
                 cs''16
-                c''''16
-                bf'''16
+                af''16
+                b''16
+                g''16
+                af''16
+                cs''16
+                cs''16
+                af''16
                 cs'''16
-                g'''16
-                c''''16
-                cs'''16
-                fs''16
-                g'''16
-                c''''16
-                cs'''16
-                fs''16
-                r4
                 \bar "||"
                 \time 4/4
                 fs'''4
-                c'''4
-                af'''4
-                a'''4
-                c'''4
-                af'''4
-                a'''4
-                d'''4
-                af'''4
-                a'''4
-                d'''4
-                af'''4
-                a'''4
-                d'''4
-                af'''4
+                e'''4
+                c''''4
+                bf'''4
+                e'''4
+                c''''4
+                bf'''4
+                ef'''4
+                c''''4
+                bf'''4
+                ef'''4
+                g'''4
+                bf'''4
+                ef'''4
+                g'''4
                 r4
-                d'''4
-                af'''4
+                ef'''4
+                g'''4
                 r2
-                af'''4
+                g'''4
                 r2.
                 \bar "|."
             }
@@ -173,34 +162,33 @@
                 \time 3/4
                 \clef "treble"
                 \tempo-markup
-                f'2
+                af'2
+                g'4
                 af'4
-                f'4
-                af'2
-                af'2
+                g'2
+                g'2
                 r4
-                af'4
+                g'4
                 r2
                 \bar "||"
                 \time 2/4
                 r2
                 r2
-                r2
                 \bar "||"
                 \time 4/4
-                c'''2
-                ef''2
-                c'''4
-                ef''2
-                ef''4
-                ef''2
-                ef''2
-                ef''4
-                ef''2
+                cs''2
+                cs''2
+                cs''4
+                cs''2
+                b''4
+                cs''2
+                b''2
+                cs''4
+                b''2
                 r4
-                ef''2
+                b''2
                 r2
-                ef''4
+                b''4
                 r2.
                 \bar "|."
             }
@@ -209,42 +197,39 @@
                 \time 3/4
                 \clef "bass"
                 \tempo-markup
-                af2
-                bf4
-                af4
-                bf2
-                bf2
+                a2
+                fs4
+                a4
+                fs2
+                fs2
                 r4
-                bf4
+                fs4
                 r2
                 \bar "||"
                 \time 2/4
+                af,8
                 ef8
-                cs,8
-                d8
-                d8
-                d8
-                d8
-                c'8
-                bf,8
-                c'8
-                bf,8
-                r4
+                f8
+                g8
+                ef8
+                f8
+                g8
+                ef,8
                 \bar "||"
                 \time 4/4
+                c2
                 fs2
-                cs2
+                c4
+                fs2
+                ef4
+                fs2
+                ef2
                 fs4
-                cs2
-                c4
-                cs2
-                c2
-                cs4
-                c2
+                ef2
                 r4
-                c2
+                ef2
                 r2
-                c4
+                ef4
                 r2.
                 \bar "|."
             }
@@ -260,29 +245,28 @@
                 \time 3/4
                 \clef "treble"
                 \tempo-markup
-                a'2
-                bf'4
-                a'4
-                bf'2
-                bf'2
+                e'2
+                b'4
+                e'4
+                b'2
+                b'2
                 r4
-                bf'4
+                b'4
                 r2
                 \bar "||"
                 \time 2/4
                 r2
                 r2
-                r2
                 \bar "||"
                 \time 4/4
-                g1
-                g1
-                g1
-                g2.
+                c'1
+                c'1
+                c'1
+                c'2.
                 r4
-                g2
+                c'2
                 r2
-                g4
+                c'4
                 r2.
                 \bar "|."
             }
@@ -292,33 +276,32 @@
                 \clef "bass"
                 \tempo-markup
                 ef2
-                fs4
+                f4
                 ef4
-                fs2
-                fs2
+                f2
+                f2
                 r4
-                fs4
+                f4
                 r2
                 \bar "||"
                 \time 2/4
                 r2
                 r2
-                r2
                 \bar "||"
                 \time 4/4
+                af,2
                 ef,2
-                a,2
+                af,4
+                ef,2
+                d,4
+                ef,2
+                d,2
                 ef,4
-                a,2
-                c,4
-                a,2
-                c,2
-                a,4
-                c,2
+                d,2
                 r4
-                c,2
+                d,2
                 r2
-                c,4
+                d,4
                 r2.
                 \bar "|."
             }
@@ -332,29 +315,28 @@
             \time 3/4
             \clef "bass"
             \tempo-markup
-            c'2
-            cs4
-            c'4
-            cs2
-            cs2
+            d2
+            a4
+            d4
+            a2
+            a2
             r4
-            cs4
+            a4
             r2
             \bar "||"
             \time 2/4
             r2
             r2
-            r2
             \bar "||"
             \time 4/4
-            fs,1
-            fs,1
-            fs,1
-            fs,2.
+            a,1
+            a,1
+            a,1
+            a,2.
             r4
-            fs,2
+            a,2
             r2
-            fs,4
+            a,4
             r2.
             \bar "|."
         }

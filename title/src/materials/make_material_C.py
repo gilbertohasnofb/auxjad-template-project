@@ -1,23 +1,22 @@
 import random
-from typing import Optional
 
 import abjad
 
+from .material_C_definitions import RANDOM_SEED
 
-def make_material_C(
-    seed: Optional[int] = None,
-) -> list[abjad.Staff]:
+
+def make_material_C() -> list[abjad.Staff]:
     r"""
     Generates material for Segment C
 
     Args:
-        seed: optional ``int`` for random seed.
+        None
 
     Returns:
         ``list`` of ``abjad.Staff``.
     """
-    if seed is not None:
-        random.seed(seed)
+    if RANDOM_SEED:
+        random.seed(RANDOM_SEED)
 
     material_C = [
         abjad.Staff([abjad.Note(random.randint(24, 36), (1, 4)) for _ in range(6)]),
