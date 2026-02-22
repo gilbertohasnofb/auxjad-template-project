@@ -344,7 +344,7 @@
     \layout {}
     \midi
     {
-        \tempo 4 = 60
+        \tempo 8 = 72
     }
 %! abjad.LilyPondFile._get_formatted_blocks()
 }

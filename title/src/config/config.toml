@@ -10,9 +10,10 @@
     fontsize = 1.5
 
 [tempo]
-    custom_tempo_markup = true
-    initial_reference_note = 8
-    initial_tempo_markup = "ca. 60"
+    tempo_reference_note = 8
+    tempo_value = 72
+    tempo_custom_markup = "ca. 72"  # May be deleted if custom markup is not needed
+                                    # (e.g. for \tempo 8 = 72)
 
 [layout]
     paper_size = 'a4'
@@ -39,7 +40,7 @@
     timing_base_moment = '1/4'
     base_shortest_duration = '1/32'
     horizontal_tuplets = true
-    large_time_signatures = true  # the function add_large_time_signatures() must then be called in
+    large_time_signatures = true  # The function add_large_time_signatures() must then be called in
                                   # make_score(), otherwise no time signature will be output
 
 [instrumentation]

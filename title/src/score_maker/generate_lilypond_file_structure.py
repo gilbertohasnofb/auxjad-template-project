@@ -1,6 +1,7 @@
 from collections import namedtuple
 
 import abjad
+import tomli
 
 
 def generate_lilypond_file_structure(
@@ -21,6 +22,12 @@ def generate_lilypond_file_structure(
     print("----------------------------------")
     print()
 
+    with open("./src/config/config.toml", "rb") as f:
+        config_dict = tomli.load(f)
+
+    TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
+    TEMPO_VALUE = config_dict["tempo"]["tempo_value"]
+
     # creating score and appending instruments
     score = abjad.Score()
     for instrument in instrument_properties:
@@ -30,7 +37,7 @@ def generate_lilypond_file_structure(
     score_block = abjad.Block(name="score")
     layout_block = abjad.Block(name="layout")
     midi_block = abjad.Block(name="midi")
-    midi_block.items.append(r"\tempo 4 = 60")  # WARNING: must change tempo in stylesheet too!
+    midi_block.items.append(f"\\tempo {TEMPO_REFERENCE_NOTE} = {TEMPO_VALUE}")
     score_block.items.append(score)
     score_block.items.append(layout_block)
     score_block.items.append(midi_block)

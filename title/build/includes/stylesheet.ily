@@ -159,7 +159,7 @@ tempo-markup = {
             \small{
                 \override #'(flag-style . flat-flag)
                 \general-align #Y #DOWN \note {8} #1
-                \larger " = ca. 60"
+                \larger " = ca. 72"
             }
         }
     }

@@ -51,9 +51,11 @@ def stylesheet_generator() -> None:
     SYSTEM_SEPARATOR = config_dict["layout"]["system_separator"]
 
     # Tempo
-    CUSTOM_TEMPO_MARKUP = config_dict["tempo"]["custom_tempo_markup"]
-    INITIAL_REFERENCE_NOTE = config_dict["tempo"]["initial_reference_note"]
-    INITIAL_TEMPO_MARKUP = config_dict["tempo"]["initial_tempo_markup"]
+    TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
+    try:
+        TEMPO_MARKUP = config_dict["tempo"]["tempo_custom_markup"]
+    except:
+        TEMPO_MARKUP = config_dict["tempo"]["tempo_value"]
 
     # Style
     ACCIDENTAL_STYLE = config_dict["style"]["accidental_style"]
@@ -237,8 +239,8 @@ def stylesheet_generator() -> None:
             \\concat{{
                 \\small{{
                     \\override #'(flag-style . {FLAG_STYLE})
-                    \\general-align #Y #DOWN \\note {{{INITIAL_REFERENCE_NOTE}}} #1
-                    \\larger " = {INITIAL_TEMPO_MARKUP}"
+                    \\general-align #Y #DOWN \\note {{{TEMPO_REFERENCE_NOTE}}} #1
+                    \\larger " = {TEMPO_MARKUP}"
                 }}
             }}
         }}
@@ -256,8 +258,7 @@ def stylesheet_generator() -> None:
     if LARGE_TIME_SIGNATURES:
         stylesheet_string += stylesheet_large_time_signatures
     stylesheet_string += stylesheet_layout_block_end
-    if CUSTOM_TEMPO_MARKUP:
-        stylesheet_string += stylesheet_custom_tempo_markup
+    stylesheet_string += stylesheet_custom_tempo_markup
 
     stylesheet_string = textwrap.dedent(stylesheet_string)
 
