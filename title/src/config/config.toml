@@ -33,6 +33,8 @@
     min_systems_per_page = 2
     max_systems_per_page = 2
     system_separator = '\fill-line { \slashSeparator \slashSeparator }'
+    hide_empty_staves = true
+    grand_staff_brace_collapse_height = 4
 
 [style]
     accidental_style = 'dodecaphonic'
@@ -52,7 +54,7 @@
     ]
     contexts = [
         'Staff',
-        'PianoStaff',
+        'GrandStaff',  # not PianoStaff so that hide_empty_staves can work for this instrument
         'GrandStaff',
         'Staff',
     ]

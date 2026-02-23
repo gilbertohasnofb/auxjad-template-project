@@ -49,6 +49,13 @@ def stylesheet_generator() -> None:
     MIN_SYSTEMS_PER_PAGE = config_dict["layout"]["min_systems_per_page"]
     MAX_SYSTEMS_PER_PAGE = config_dict["layout"]["max_systems_per_page"]
     SYSTEM_SEPARATOR = config_dict["layout"]["system_separator"]
+    HIDE_EMPTY_STAVES = config_dict["layout"]["hide_empty_staves"]
+    try:
+        GRAND_STAFF_BRACE_COLLAPSE_HEIGHT = config_dict["layout"][
+            "grand_staff_brace_collapse_height"
+        ]
+    except:
+        GRAND_STAFF_BRACE_COLLAPSE_HEIGHT = None
 
     # Tempo
     TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
@@ -122,6 +129,9 @@ def stylesheet_generator() -> None:
 
     stylesheet_layout_block_start = f"""
     \\layout {{
+        % Hiding dynamics; used only for MIDI output, articulations are used for volume information
+        \\omit Score.DynamicText
+
         % accidental styles
         \\accidentalStyle Score.{ACCIDENTAL_STYLE}
         \\override Accidental.hide-tied-accidental-after-break = ##t
@@ -227,6 +237,19 @@ def stylesheet_generator() -> None:
         }}
     """
 
+    stylesheet_grand_staff_brace_collapse_height = f"""
+        % curly braces should be displayed even when a single staff is shown
+        \override GrandStaff.SystemStartBrace.collapse-height = #{GRAND_STAFF_BRACE_COLLAPSE_HEIGHT}
+    """
+
+    stylesheet_hide_empty_staves = f"""
+        % hiding empty staves and moving rehearsal marks to staff context
+        \\context {{
+            \\Staff
+            \\RemoveEmptyStaves
+        }}
+    """
+
     stylesheet_layout_block_end = f"""
     }}
     """
@@ -238,7 +261,7 @@ def stylesheet_generator() -> None:
         \\tempo \\markup{{
             \\concat{{
                 \\small{{
-                    \\override #'(flag-style . {FLAG_STYLE})
+                    \\override #'(flag-style . flat-flag)
                     \\general-align #Y #DOWN \\note {{{TEMPO_REFERENCE_NOTE}}} #1
                     \\larger " = {TEMPO_MARKUP}"
                 }}
@@ -249,15 +272,23 @@ def stylesheet_generator() -> None:
 
     # Joining all strings
     stylesheet_string = ""
+
     stylesheet_string += stylesheet_header
+
     stylesheet_string += stylesheet_paper_size
     stylesheet_string += stylesheet_paper_block
+
     stylesheet_string += stylesheet_layout_block_start
     if HORIZONTAL_TUPLETS:
         stylesheet_string += stylesheet_horizontal_tuplets
     if LARGE_TIME_SIGNATURES:
         stylesheet_string += stylesheet_large_time_signatures
+    if GRAND_STAFF_BRACE_COLLAPSE_HEIGHT is not None:
+        stylesheet_string += stylesheet_grand_staff_brace_collapse_height
+    if HIDE_EMPTY_STAVES:
+        stylesheet_string += stylesheet_hide_empty_staves
     stylesheet_string += stylesheet_layout_block_end
+
     stylesheet_string += stylesheet_custom_tempo_markup
 
     stylesheet_string = textwrap.dedent(stylesheet_string)

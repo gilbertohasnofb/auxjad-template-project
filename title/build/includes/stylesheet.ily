@@ -49,6 +49,9 @@
 }
 
 \layout {
+    % Hiding dynamics; used only for MIDI output, articulations are used for volume information
+    \omit Score.DynamicText
+
     % accidental styles
     \accidentalStyle Score.dodecaphonic
     \override Accidental.hide-tied-accidental-after-break = ##t
@@ -147,6 +150,15 @@
     \context {
         \Staff
         \remove "Time_signature_engraver"
+    }
+
+    % curly braces should be displayed even when a single staff is shown
+    \override GrandStaff.SystemStartBrace.collapse-height = #4
+
+    % hiding empty staves and moving rehearsal marks to staff context
+    \context {
+        \Staff
+        \RemoveEmptyStaves
     }
 
 }

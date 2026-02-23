@@ -92,13 +92,13 @@
             r2.
             \bar "|."
         }
-        \context PianoStaff = "Piano"
+        \context GrandStaff = "Piano"
         <<
             \context Staff = "Piano_Upper"
             {
-                \set PianoStaff.instrumentName =
+                \set GrandStaff.instrumentName =
                 \markup { Piano }
-                \set PianoStaff.shortInstrumentName =
+                \set GrandStaff.shortInstrumentName =
                 \markup { Pno }
                 \time 3/4
                 \clef "treble^8"
@@ -176,20 +176,12 @@
                 r2
                 \bar "||"
                 \time 4/4
-                cs''2
-                cs''2
-                cs''4
-                cs''2
-                b''4
-                cs''2
-                b''2
-                cs''4
-                b''2
-                r4
-                b''2
-                r2
-                b''4
-                r2.
+                r1
+                r1
+                r1
+                r1
+                r1
+                r1
                 \bar "|."
             }
             \context Staff = "Piano_Lower"
@@ -217,20 +209,12 @@
                 ef,8
                 \bar "||"
                 \time 4/4
-                c2
-                fs2
-                c4
-                fs2
-                ef4
-                fs2
-                ef2
-                fs4
-                ef2
-                r4
-                ef2
-                r2
-                ef4
-                r2.
+                r1
+                r1
+                r1
+                r1
+                r1
+                r1
                 \bar "|."
             }
         >>
@@ -259,14 +243,14 @@
                 r2
                 \bar "||"
                 \time 4/4
-                c'1
-                c'1
-                c'1
-                c'2.
+                cs'1
+                cs'1
+                cs'1
+                cs'2.
                 r4
-                c'2
+                cs'2
                 r2
-                c'4
+                cs'4
                 r2.
                 \bar "|."
             }
@@ -289,19 +273,19 @@
                 r2
                 \bar "||"
                 \time 4/4
-                af,2
-                ef,2
-                af,4
-                ef,2
-                d,4
-                ef,2
-                d,2
-                ef,4
-                d,2
+                cs,2
+                b,2
+                cs,4
+                b,2
+                c,4
+                b,2
+                c,2
+                b,4
+                c,2
                 r4
-                d,2
+                c,2
                 r2
-                d,4
+                c,4
                 r2.
                 \bar "|."
             }
@@ -329,14 +313,14 @@
             r2
             \bar "||"
             \time 4/4
-            a,1
-            a,1
-            a,1
-            a,2.
+            fs,1
+            fs,1
+            fs,1
+            fs,2.
             r4
-            a,2
+            fs,2
             r2
-            a,4
+            fs,4
             r2.
             \bar "|."
         }
