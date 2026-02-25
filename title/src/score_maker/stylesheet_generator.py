@@ -34,34 +34,37 @@ def stylesheet_generator() -> None:
     RIGHT_MARGIN = config_dict["layout"]["right_margin"]
     INDENT = config_dict["layout"]["indent"]
     SHORT_INDENT = config_dict["layout"]["short_indent"]
-    MARKUP_SYSTEM_SPACING_BASIC_DISTANCE = config_dict["layout"]["markup_system_spacing"][
-        "basic_distance"
-    ]
-    MARKUP_SYSTEM_SPACING_MINIMUM_DISTANCE = config_dict["layout"]["markup_system_spacing"][
-        "minimum_distance"
-    ]
+    MARKUP_SYSTEM_SPACING_BASIC_DISTANCE = (
+        config_dict["layout"]["markup_system_spacing"]["basic_distance"]
+    )
+    MARKUP_SYSTEM_SPACING_MINIMUM_DISTANCE = (
+        config_dict["layout"]["markup_system_spacing"]["minimum_distance"]
+    )
     MARKUP_SYSTEM_SPACING_PADDING = config_dict["layout"]["markup_system_spacing"]["padding"]
-    SYSTEM_SYSTEM_SPACING_MINIMUM_DISTANCE = config_dict["layout"]["system_system_spacing"][
-        "minimum_distance"
-    ]
+    SYSTEM_SYSTEM_SPACING_MINIMUM_DISTANCE = (
+        config_dict["layout"]["system_system_spacing"]["minimum_distance"]
+    )
     PRINT_PAGE_NUMBER = config_dict["layout"]["print_page_number"]
     RAGGED_LAST_BOTTOM = config_dict["layout"]["ragged_last_bottom"]
     MIN_SYSTEMS_PER_PAGE = config_dict["layout"]["min_systems_per_page"]
     MAX_SYSTEMS_PER_PAGE = config_dict["layout"]["max_systems_per_page"]
     SYSTEM_SEPARATOR = config_dict["layout"]["system_separator"]
-    HIDE_EMPTY_STAVES = config_dict["layout"]["hide_empty_staves"]
     try:
-        GRAND_STAFF_BRACE_COLLAPSE_HEIGHT = config_dict["layout"][
-            "grand_staff_brace_collapse_height"
-        ]
-    except:
+        HIDE_EMPTY_STAVES = config_dict["layout"]["hide_empty_staves"]
+    except KeyError:
+        HIDE_EMPTY_STAVES = None
+    try:
+        GRAND_STAFF_BRACE_COLLAPSE_HEIGHT = (
+            config_dict["layout"]["grand_staff_brace_collapse_height"]
+        )
+    except KeyError:
         GRAND_STAFF_BRACE_COLLAPSE_HEIGHT = None
 
     # Tempo
     TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
     try:
         TEMPO_MARKUP = config_dict["tempo"]["tempo_custom_markup"]
-    except:
+    except KeyError:
         TEMPO_MARKUP = config_dict["tempo"]["tempo_value"]
 
     # Style
@@ -286,7 +289,7 @@ def stylesheet_generator() -> None:
     if GRAND_STAFF_BRACE_COLLAPSE_HEIGHT is not None:
         stylesheet_string += stylesheet_grand_staff_brace_collapse_height
     if HIDE_EMPTY_STAVES:
-        stylesheet_string += stylesheet_hide_empty_staves
+        stylesheet_string += stylesheet_hide_empty_staves  
     stylesheet_string += stylesheet_layout_block_end
 
     stylesheet_string += stylesheet_custom_tempo_markup
