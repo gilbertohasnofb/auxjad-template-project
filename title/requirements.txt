@@ -1,5 +1,5 @@
 abjad==3.4
-auxjad>=1.0.0
-black>=25.1.0
-tomli>=2.2.1
-tqdm>=4.67.1
+auxjad==1.0.8
+black==25.1.0
+tomli==2.2.1
+tqdm==4.67.1

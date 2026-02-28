@@ -18,4 +18,4 @@ Requires:
 
 * LilyPond 2.24
 * Abjad 3.4
-* Auxjad 1.0
+* Auxjad 1.0.8
