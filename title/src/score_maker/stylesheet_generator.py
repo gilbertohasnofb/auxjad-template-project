@@ -1,7 +1,6 @@
 import textwrap
+import tomllib
 from typing import Any
-
-import tomli
 
 
 def _fetch_values_from_config_dict(
@@ -408,7 +407,7 @@ def stylesheet_generator() -> None:
     """
     # reading config.toml file
     with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomli.load(f)
+        config_dict = tomllib.load(f)
 
     generated_strings = (
         _generate_include_commands(config_dict),

@@ -1,7 +1,7 @@
+import tomllib
 from collections import namedtuple
 
 import abjad
-import tomli
 
 
 def generate_lilypond_file_structure(
@@ -23,7 +23,7 @@ def generate_lilypond_file_structure(
     print()
 
     with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomli.load(f)
+        config_dict = tomllib.load(f)
 
     try:
         TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]

@@ -1,4 +1,4 @@
-import tomli
+import tomllib
 
 from .create_staves import create_staves
 from .generate_materials import generate_materials
@@ -24,7 +24,7 @@ def score_maker():
     """
     # reading config.toml file
     with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomli.load(f)
+        config_dict = tomllib.load(f)
 
     # Header
     TITLE = config_dict["header"]["title"]

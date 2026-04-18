@@ -14,3 +14,10 @@ To build the score, run:
 
 	~ $ cd src
 	~ $ python3 title.py
+
+Requires:
+
+* Python 3.12
+* LilyPond 2.24
+* Abjad 3.4
+* Auxjad 1.0.8
