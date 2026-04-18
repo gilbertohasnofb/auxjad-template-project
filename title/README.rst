@@ -16,6 +16,7 @@ Execute it using:
     
 Requires:
 
+* Python 3.12
 * LilyPond 2.24
 * Abjad 3.4
 * Auxjad 1.0.8
