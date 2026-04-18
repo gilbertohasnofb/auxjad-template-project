@@ -25,8 +25,14 @@ def generate_lilypond_file_structure(
     with open("./src/config/config.toml", "rb") as f:
         config_dict = tomli.load(f)
 
-    TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
-    TEMPO_VALUE = config_dict["tempo"]["tempo_value"]
+    try:
+        TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
+    except KeyError:
+        TEMPO_REFERENCE_NOTE = None
+    try:
+        TEMPO_VALUE = config_dict["tempo"]["tempo_value"]
+    except KeyError:
+        TEMPO_VALUE = None
 
     # creating score and appending instruments
     score = abjad.Score()
@@ -37,7 +43,8 @@ def generate_lilypond_file_structure(
     score_block = abjad.Block(name="score")
     layout_block = abjad.Block(name="layout")
     midi_block = abjad.Block(name="midi")
-    midi_block.items.append(f"\\tempo {TEMPO_REFERENCE_NOTE} = {TEMPO_VALUE}")
+    if TEMPO_REFERENCE_NOTE is not None and TEMPO_VALUE is not None:
+        midi_block.items.append(f"\\tempo {TEMPO_REFERENCE_NOTE} = {TEMPO_VALUE}")
     score_block.items.append(score)
     score_block.items.append(layout_block)
     score_block.items.append(midi_block)

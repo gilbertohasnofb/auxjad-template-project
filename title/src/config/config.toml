@@ -1,6 +1,9 @@
 [filename]
     output_filename = 'title'
 
+[include]
+    filenames = ['articulate.ly']
+
 [header]
     title = 'title'
     subtitle = 'subtitle'
@@ -12,33 +15,35 @@
 [tempo]
     tempo_reference_note = 8
     tempo_value = 72
-    tempo_custom_markup = "ca. 72"  # May be deleted if custom markup is not needed
-                                    # (e.g. for \tempo 8 = 72)
+    tempo_value_prefix = "ca. "  # The space at the end of the string may be omited for prefixes
+                                 # such as "~", which would output a tempo of 8 = ~72
 
-[layout]
+[size]
     paper_size = 'a4'
     staff_size = 15.5
+
+[paper]
     top_margin = '2.0\cm'
     bottom_margin = '2.3\cm'
     left_margin = '1.7\cm'
     right_margin = '1.7\cm'
     indent = '1.4\cm'
     short_indent = '1.1\cm'
-    markup_system_spacing.basic_distance = 4
-    markup_system_spacing.minimum_distance = 4
-    markup_system_spacing.padding = 4
-    system_system_spacing.minimum_distance = 15
     print_page_number = '##f'
     ragged_last_bottom = '##f'
     min_systems_per_page = 2
     max_systems_per_page = 2
+    system_system_spacing_minimum_distance = 15
+    markup_system_spacing_basic_distance = 4
+    markup_system_spacing_minimum_distance = 4
+    markup_system_spacing_padding = 4
     system_separator = '\fill-line { \slashSeparator \slashSeparator }'
-    hide_empty_staves = true
-    grand_staff_brace_collapse_height = 4
 
-[style]
+[layout]
     accidental_style = 'dodecaphonic'
     flag_style = 'flat-flag'
+    hide_empty_staves = true
+    grand_staff_brace_collapse_height = 4
     timing_base_moment = '1/4'
     base_shortest_duration = '1/32'
     horizontal_tuplets = true

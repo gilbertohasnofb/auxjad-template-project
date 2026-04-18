@@ -1,26 +1,31 @@
-
 \include "articulate.ly"
 
 \header {
     title = \markup{
         \override #'(font-name . "Futura Bold")
-        \fontsize #1.5 "title"
+        \fontsize #1.5
+        "title"
     }
     subtitle = \markup{
         \override #'(font-name . "Futura Medium")
-        \fontsize #1.5 "subtitle"
+        \fontsize #1.5
+        "subtitle"
     }
     composer = \markup{
         \override #'(font-name . "Futura Medium")
-        \fontsize #1.5 "composer"
+        \fontsize #1.5
+        "composer"
     }
     dedication = \markup{
         \override #'(font-name . "Futura Italic")
-        \fontsize #1.5 \raise #1 "dedication"
+        \fontsize #1.5
+        \raise #1
+        "dedication"
     }
     poet = \markup{
         \override #'(font-name . "Futura Medium")
-        \fontsize #1.5 "Score in C"
+        \fontsize #1.5
+        "Score in C"
     }
     tagline = ""
 }
@@ -35,26 +40,25 @@
     right-margin = 1.7\cm
     indent = 1.4\cm
     short-indent = 1.1\cm
-    markup-system-spacing = #'((basic-distance . 4)
-                               (minimum-distance . 4)
-                               (padding . 4))
-    system-system-spacing.minimum-distance = 15
     print-page-number = ##f
     ragged-last-bottom = ##f
     min-systems-per-page = 2
     max-systems-per-page = 2
+    system-system-spacing.minimum-distance = 15
+    markup-system-spacing = #'(
+        (basic-distance . 4)
+        (minimum-distance . 4)
+        (padding . 4)
+    )
     system-separator-markup = \markup{
         \fill-line { \slashSeparator \slashSeparator }
     }
 }
 
 \layout {
-    % Hiding dynamics; used only for MIDI output, articulations are used for volume information
-    \omit Score.DynamicText
-
     % accidental styles
-    \accidentalStyle Score.dodecaphonic
     \override Accidental.hide-tied-accidental-after-break = ##t
+    \accidentalStyle Score.dodecaphonic
 
     % flag style
     \override Score.Flag.stencil = #flat-flag
@@ -68,7 +72,7 @@
     % larger rehearsal marks surrounded by squares
     \set Score.rehearsalMarkFormatter = #format-mark-box-alphabet
     \override Score.RehearsalMark.self-alignment-X = #LEFT  % good if using large time
-                                                             % signatures above score
+                                                            % signatures above score
     \override Score.RehearsalMark.font-size = #5
     \override Score.RehearsalMark.extra-offset = #'(0.0 . 1.0)
 
@@ -90,10 +94,9 @@
 
     % horizontal spacing
     \set Timing.beamExceptions = #'()
+    \set Timing.beatStructure = 1, 1, 1, 1
     \set Timing.baseMoment = #(ly:make-moment 1/4)
-    \set Timing.beatStructure = 1,1,1,1
-    \override Score.SpacingSpanner.base-shortest-duration = 
-        #(ly:make-moment 1/32)
+    \override Score.SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/32)
 
     % spanners
     \override Tie.minimum-length = #3.5
@@ -109,7 +112,6 @@
 
     % curly braces should be displayed even when a single staff is shown
     \override GrandStaff.SystemStartBrace.collapse-height = #4
-
     % horizontal tuplets
     \override TupletBracket.stencil =
     #(lambda (grob)
@@ -152,8 +154,8 @@
         \remove "Time_signature_engraver"
     }
 
-    % curly braces should be displayed even when a single staff is shown
-    \override GrandStaff.SystemStartBrace.collapse-height = #4
+    % curly braces will be displayed even when a single staff is shown
+    \override GrandStaff.SystemStartBrace.collapse-height = #{GRAND_STAFF_BRACE_COLLAPSE_HEIGHT}
 
     % hiding empty staves and moving rehearsal marks to staff context
     \context {
