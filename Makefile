@@ -1,4 +1,4 @@
-.PHONY: black-check black-reformat flake8 isort-check isort-reformat pydocstyle check reformat
+.PHONY: black-check black-reformat flake8 isort-check isort-reformat pydocstyle check reformat setup
 
 black-check:
 	@. .venv/bin/activate && python3 -m black . --check
@@ -27,3 +27,8 @@ check:
 reformat:
 	$(MAKE) black-reformat
 	$(MAKE) isort-reformat
+
+setup:
+	python3 -m venv .venv
+	.venv/bin/pip install --upgrade pip
+	.venv/bin/pip install -r title/requirements.txt
