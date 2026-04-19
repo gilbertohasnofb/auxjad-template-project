@@ -339,8 +339,8 @@ def _generate_layout_block(config_dict: dict) -> str:
 
     if GRAND_STAFF_BRACE_COLLAPSE_HEIGHT is not None:
         output_string += "    % curly braces will be displayed even when a single staff is shown\n"
-        output_string += f"    \override GrandStaff.SystemStartBrace.collapse-height = "
-        output_string += "#{GRAND_STAFF_BRACE_COLLAPSE_HEIGHT}\n"
+        output_string += "    \\override GrandStaff.SystemStartBrace.collapse-height = "
+        output_string += f"#{GRAND_STAFF_BRACE_COLLAPSE_HEIGHT}\n"
         output_string += "\n"
 
     if HIDE_EMPTY_STAVES:

@@ -1,5 +1,5 @@
-import tomllib
 import os
+import tomllib
 
 import abjad
 
@@ -34,7 +34,7 @@ def compile_ly_file(
     print("- Creating directory ./build")
     try:
         os.mkdir("./build")
-    except:
+    except FileExistsError:
         print("- Directory ./build already exists")
     print()
 
@@ -42,7 +42,7 @@ def compile_ly_file(
     print("- Creating directory ./build/includes")
     try:
         os.mkdir("./build/includes")
-    except:
+    except FileExistsError:
         print("- Directory ./build/includes already exists")
         print()
     finally:

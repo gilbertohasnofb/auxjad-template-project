@@ -1,15 +1,15 @@
 import tomllib
 
+from .add_initial_clefs import add_initial_clefs
+from .add_instrument_names import add_instrument_names
+from .add_large_time_signatures import add_large_time_signatures
+from .add_tempo_and_final_tweaks import add_tempo_and_final_tweaks
+from .compile_ly_file import compile_ly_file
 from .create_staves import create_staves
+from .generate_lilypond_file_structure import generate_lilypond_file_structure
 from .generate_materials import generate_materials
 from .generate_segments import generate_segments
 from .prettify_score import prettify_score
-from .generate_lilypond_file_structure import generate_lilypond_file_structure
-from .add_large_time_signatures import add_large_time_signatures
-from .add_instrument_names import add_instrument_names
-from .add_initial_clefs import add_initial_clefs
-from .add_tempo_and_final_tweaks import add_tempo_and_final_tweaks
-from .compile_ly_file import compile_ly_file
 
 
 def score_maker():

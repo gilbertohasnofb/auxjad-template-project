@@ -3,6 +3,7 @@ import random
 import abjad
 import auxjad
 
+from .. import tools  # noqa: F401
 from .segment_02_definitions import (
     INCLUDE_DOUBLE_BARLINE,
     OUTPUT_N,
@@ -11,7 +12,6 @@ from .segment_02_definitions import (
     STEP_SIZE,
     WINDOW_SIZE,
 )
-from .. import tools
 
 
 def make_segment_02(

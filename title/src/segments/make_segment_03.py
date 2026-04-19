@@ -3,13 +3,8 @@ import random
 import abjad
 import auxjad
 
-from .segment_03_definitions import (
-    RANDOM_SEED,
-    SEGMENT_MATERIAL,
-    STEP_SIZE,
-    WINDOW_SIZE,
-)
-from .. import tools
+from .. import tools  # noqa: F401
+from .segment_03_definitions import RANDOM_SEED, SEGMENT_MATERIAL, STEP_SIZE, WINDOW_SIZE
 
 
 def make_segment_03(
