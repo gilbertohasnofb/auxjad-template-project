@@ -1,34 +1,27 @@
-.PHONY: black-check black-reformat flake8 isort-check isort-reformat pydocstyle check reformat setup
+PYTHON := .venv/bin/python
 
-black-check:
-	@. .venv/bin/activate && python3 -m black . --check
+.PHONY: black-check black-reformat check flake8 isort-check isort-reformat pydocstyle reformat setup
 
-black-reformat:
-	@. .venv/bin/activate && python3 -m black .
+# Formatting and linting
+black-check: setup
+	$(PYTHON) -m black . --check
+black-reformat: setup
+	$(PYTHON) -m black .
+flake8: setup
+	$(PYTHON) -m flake8
+isort-check: setup
+	$(PYTHON) -m isort --check-only --diff .
+isort-reformat: setup
+	$(PYTHON) -m isort .
+pydocstyle: setup
+	$(PYTHON) -m pydocstyle
+check: black-check flake8 isort-check pydocstyle
+reformat: black-reformat isort-reformat
 
-flake8:
-	@. .venv/bin/activate && python3 -m flake8
-
-isort-check:
-	@. .venv/bin/activate && python3 -m isort --check-only --diff .
-
-isort-reformat:
-	@. .venv/bin/activate && python3 -m isort .
-
-pydocstyle:
-	@. .venv/bin/activate && python3 -m pydocstyle
-
-check:
-	$(MAKE) black-check
-	$(MAKE) flake8
-	$(MAKE) isort-check
-	$(MAKE) pydocstyle
-
-reformat:
-	$(MAKE) black-reformat
-	$(MAKE) isort-reformat
-
-setup:
+# Setting up
+.venv/.installed: title/requirements.txt
 	python3 -m venv .venv
 	.venv/bin/pip install --upgrade pip
 	.venv/bin/pip install -r title/requirements.txt
+	touch .venv/.installed
+setup: .venv/.installed
