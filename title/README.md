@@ -10,11 +10,11 @@ For instrument 1, instrument 2, and instrument 3.
 
 Execute it using:
 
-.. code-block::
-
-    ~$ python3 ./title.py
+```
+~$ python3 ./title.py
+```
     
-Requires:
+**Requires**:
 
 * Python 3.12
 * LilyPond 2.24

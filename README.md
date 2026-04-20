@@ -1,0 +1,23 @@
+Auxjad Template Project
+=======================
+
+Template for projects using Auxjad and Abjad.
+
+Rename `src/title.py` and setup project in `src/config/config.toml`.
+
+* for landscape pages, append `'landscape'` to `paper_size`, e.g. `'a4landscape'`
+* for empty tags (e.g. subtitle or dedication), either use `''` or delete/comment out the line
+
+To build the score, run:
+
+```
+~ $ cd src
+~ $ python3 title.py
+```
+
+**Requires**:
+
+* Python 3.12
+* LilyPond 2.24
+* Abjad 3.4
+* Auxjad 1.0.8
