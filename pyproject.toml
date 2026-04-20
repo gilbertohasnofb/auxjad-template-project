@@ -1,25 +1,23 @@
 [project]
 name = "auxjad-template-project"
-dynamic = ["dependencies"]
-version = "1.0.0"
 description = "Template for projects using Auxjad and Abjad."
+authors = [{name = "Gilberto Agostinho", email = "gilbertohasnofb@gmail.com"}]
+readme = "README.md"
 license = { text = "MIT" }
-readme = "README.rst"
 requires-python = ">=3.10"
-
-[[project.authors]]
-name = "Gilberto Agostinho"
-email = "gilbertohasnofb@gmail.com"
+version = "1.0.0"
+dynamic = ["dependencies"]
 
 [project.urls]
 homepage = "https://github.com/gilbertohasnofb/auxjad-template-project"
+documentation = "https://github.com/gilbertohasnofb/auxjad-template-project"
 source = "https://github.com/gilbertohasnofb/auxjad-template-project"
 
 [tool.pytest.ini_options]
 pythonpath = "title"
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
+dependencies = {file = ["title/requirements.txt"]}
 
 [tool.black]
 line-length = 100

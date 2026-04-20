@@ -1,6 +1,7 @@
 PYTHON := .venv/bin/python
 
-.PHONY: black-check black-reformat check flake8 isort-check isort-reformat pydocstyle reformat setup
+.PHONY: black-check black-reformat clean check flake8 isort-check isort-reformat pydocstyle \
+		reformat setup
 
 # Setup
 .venv/.installed: title/requirements.txt
@@ -11,17 +12,21 @@ PYTHON := .venv/bin/python
 setup: .venv/.installed
 
 # Formatting and linting
-black-check: setup
+black-check:
 	$(PYTHON) -m black . --check
-black-reformat: setup
+black-reformat:
 	$(PYTHON) -m black .
-flake8: setup
+flake8:
 	$(PYTHON) -m flake8
-isort-check: setup
+isort-check:
 	$(PYTHON) -m isort --check-only --diff .
-isort-reformat: setup
+isort-reformat:
 	$(PYTHON) -m isort .
-pydocstyle: setup
+pydocstyle:
 	$(PYTHON) -m pydocstyle
 check: black-check flake8 isort-check pydocstyle
 reformat: black-reformat isort-reformat
+
+# Cleanup
+clean:
+	find . -type f -name "*.pyc" -delete && find . -type d -name "__pycache__" -delete
