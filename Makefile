@@ -1,31 +1,37 @@
 PYTHON := .venv/bin/python
 
 .PHONY: black-check black-reformat clean check flake8 isort-check isort-reformat pydocstyle \
-		reformat setup
+		reformat setup test
 
 # Setup
-.venv/.installed: title/requirements.txt
+.venv/.installed: requirements.txt requirements-dev.txt requirements-test.txt
 	python3 -m venv .venv
 	.venv/bin/pip install --upgrade pip
-	.venv/bin/pip install -r title/requirements.txt
+	.venv/bin/pip install -r requirements.txt
+	.venv/bin/pip install -r requirements-dev.txt
+	.venv/bin/pip install -r requirements-test.txt
 	touch .venv/.installed
 setup: .venv/.installed
 
 # Formatting and linting
 black-check:
-	$(PYTHON) -m black . --check
+	@$(PYTHON) -m black . --check
 black-reformat:
-	$(PYTHON) -m black .
+	@$(PYTHON) -m black .
 flake8:
-	$(PYTHON) -m flake8
+	@$(PYTHON) -m flake8
 isort-check:
-	$(PYTHON) -m isort --check-only --diff .
+	@$(PYTHON) -m isort --check-only --diff .
 isort-reformat:
-	$(PYTHON) -m isort .
+	@$(PYTHON) -m isort .
 pydocstyle:
-	$(PYTHON) -m pydocstyle
+	@$(PYTHON) -m pydocstyle
 check: black-check flake8 isort-check pydocstyle
 reformat: black-reformat isort-reformat
+
+# Unit testing
+test:
+	@$(PYTHON) -m pytest
 
 # Cleanup
 clean:
