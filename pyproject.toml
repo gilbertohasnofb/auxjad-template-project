@@ -3,10 +3,10 @@ name = "auxjad-template-project"
 description = "Template for projects using Auxjad and Abjad."
 authors = [{name = "Gilberto Agostinho", email = "gilbertohasnofb@gmail.com"}]
 readme = "README.md"
-license = { text = "MIT" }
+license = {file = "LICENSE"}
 requires-python = ">=3.10"
 version = "1.0.0"
-dynamic = ["dependencies"]
+dynamic = ["dependencies", "optional-dependencies"]
 
 [project.urls]
 homepage = "https://github.com/gilbertohasnofb/auxjad-template-project"
@@ -14,14 +14,17 @@ documentation = "https://github.com/gilbertohasnofb/auxjad-template-project"
 source = "https://github.com/gilbertohasnofb/auxjad-template-project"
 
 [tool.pytest.ini_options]
-pythonpath = "title"
+pythonpath = "src"
+testpaths = "tests"
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["title/requirements.txt"]}
+dependencies = {file = ["requirements.txt"]}
+optional-dependencies.dev = {file = ["requirements-dev.txt"]}
+optional-dependencies.test = {file = ["requirements-test.txt"]}
 
 [tool.black]
 line-length = 100
-target-version = ["py310"]
+target-version = ["py310", "py311", "py312", "py313"]
 
 [tool.isort]
 case_sensitive = true

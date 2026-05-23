@@ -51,7 +51,7 @@
         (padding . 4)
     )
     system-separator-markup = \markup{
-        \fill-line { \slashSeparator \slashSeparator }
+        \fill-line {\slashSeparator \slashSeparator}
     }
 }
 
