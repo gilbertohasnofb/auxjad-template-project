@@ -1,8 +1,8 @@
 import os
-import tomllib
 
 import abjad
 
+from ..utils import load_config
 from .stylesheet_generator import stylesheet_generator
 
 
@@ -24,8 +24,7 @@ def compile_ly_file(
     print()
 
     # reading config.toml file
-    with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomllib.load(f)
+    config_dict = load_config()
 
     # filename
     OUTPUT_FILENAME = config_dict["filename"]["output_filename"]

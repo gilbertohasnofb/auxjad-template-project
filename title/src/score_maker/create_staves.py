@@ -1,7 +1,8 @@
-import tomllib
 from collections import namedtuple
 
 import abjad
+
+from ..utils import load_config
 
 
 def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
@@ -16,8 +17,7 @@ def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
         ``Tuple`` containing ``list`` of ``abjad.Staff``'s and ``list`` of ``namedtuple``'s.
     """
     # reading config.toml file
-    with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomllib.load(f)
+    config_dict = load_config()
 
     STAFF_NAMES = config_dict["instrumentation"]["staff_names"]
     CONTEXTS = config_dict["instrumentation"]["contexts"]

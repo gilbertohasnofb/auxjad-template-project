@@ -155,7 +155,7 @@
     }
 
     % curly braces will be displayed even when a single staff is shown
-    \override GrandStaff.SystemStartBrace.collapse-height = #{GRAND_STAFF_BRACE_COLLAPSE_HEIGHT}
+    \override GrandStaff.SystemStartBrace.collapse-height = #4
 
     % hiding empty staves and moving rehearsal marks to staff context
     \context {

@@ -14,3 +14,5 @@ list_of_segment_makers = [
     make_segment_02,
     make_segment_03,
 ]
+
+__all__ = ["list_of_segment_makers"]

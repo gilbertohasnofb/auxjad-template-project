@@ -1,7 +1,8 @@
-import tomllib
 from collections import namedtuple
 
 import abjad
+
+from ..utils import load_config
 
 
 def generate_lilypond_file_structure(
@@ -22,17 +23,11 @@ def generate_lilypond_file_structure(
     print("----------------------------------")
     print()
 
-    with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomllib.load(f)
+    # reading config.toml file
+    config_dict = load_config()
 
-    try:
-        TEMPO_REFERENCE_NOTE = config_dict["tempo"]["tempo_reference_note"]
-    except KeyError:
-        TEMPO_REFERENCE_NOTE = None
-    try:
-        TEMPO_VALUE = config_dict["tempo"]["tempo_value"]
-    except KeyError:
-        TEMPO_VALUE = None
+    TEMPO_REFERENCE_NOTE = config_dict["tempo"].get("tempo_reference_note")
+    TEMPO_VALUE = config_dict["tempo"].get("tempo_value")
 
     # creating score and appending instruments
     score = abjad.Score()

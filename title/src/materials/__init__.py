@@ -23,3 +23,5 @@ list_of_material_names = [
     MATERIAL_B_NAME,
     MATERIAL_C_NAME,
 ]
+
+__all__ = ["list_of_material_makers", "list_of_material_names"]

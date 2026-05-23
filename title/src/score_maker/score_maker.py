@@ -1,5 +1,4 @@
-import tomllib
-
+from ..utils import load_config
 from .add_initial_clefs import add_initial_clefs
 from .add_instrument_names import add_instrument_names
 from .add_large_time_signatures import add_large_time_signatures
@@ -23,8 +22,7 @@ def score_maker():
         None
     """
     # reading config.toml file
-    with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomllib.load(f)
+    config_dict = load_config()
 
     # Header
     TITLE = config_dict["header"]["title"]

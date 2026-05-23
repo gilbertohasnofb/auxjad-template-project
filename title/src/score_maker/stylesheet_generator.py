@@ -1,6 +1,7 @@
 import textwrap
-import tomllib
 from typing import Any
+
+from ..utils import load_config
 
 
 def _fetch_values_from_config_dict(
@@ -11,10 +12,8 @@ def _fetch_values_from_config_dict(
 ) -> Any | tuple[Any]:
     values = []
     for key in keys:
-        try:
-            values.append(config_dict[block][key])
-        except KeyError:
-            values.append(None)
+        value = config_dict[block].get(key)
+        values.append(value)
     if len(keys) == 1:
         return values[0]
     return tuple(values)
@@ -406,8 +405,7 @@ def stylesheet_generator() -> None:
         None
     """
     # reading config.toml file
-    with open("./src/config/config.toml", "rb") as f:
-        config_dict = tomllib.load(f)
+    config_dict = load_config()
 
     generated_strings = (
         _generate_include_commands(config_dict),
