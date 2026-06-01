@@ -5,14 +5,14 @@ from .. import segments
 
 
 def generate_segments(
-    dict_of_materials: dict[str, abjad.Container],
+    materials_dict: dict[str, abjad.Container],
     staves: list[abjad.Staff],
 ) -> None:
     r"""
     Generates musical materials from segments and adds them to the staves.
 
     Args:
-        dict_of_materials: ``dict`` containing names of materials as ``str`` and the materials
+        materials_dict: ``dict`` containing names of materials as ``str`` and the materials
             themselves as ``abjad.Container``.
         staves: ``list`` of ``abjad.Staff``'s.
 
@@ -26,7 +26,7 @@ def generate_segments(
     list_of_segments = []
     with tqdm(total=len(segments.list_of_segment_makers)) as pbar:
         for segment_maker in segments.list_of_segment_makers:
-            segment = segment_maker(dict_of_materials)
+            segment = segment_maker(materials_dict)
             list_of_segments.append(segment)
             pbar.update(1)
     print()

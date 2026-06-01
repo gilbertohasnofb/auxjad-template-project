@@ -17,12 +17,12 @@ def generate_materials() -> dict[str, abjad.Container]:
     print("Generating musical materials")
     print("---------------------------")
     print()
-    dict_of_materials = {}
+    materials_dict = {}
     with tqdm(total=len(list_of_material_makers)) as pbar:
         for material_name, material_maker in zip(list_of_material_names, list_of_material_makers):
             music_container = material_maker()
-            dict_of_materials[material_name] = music_container
+            materials_dict[material_name] = music_container
             pbar.update(1)
     print()
 
-    return dict_of_materials
+    return materials_dict

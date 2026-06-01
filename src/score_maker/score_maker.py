@@ -33,8 +33,8 @@ def score_maker():
 
     # Creating music
     staves, instrument_properties = create_staves()
-    dict_of_materials = generate_materials()
-    generate_segments(dict_of_materials, staves)
+    materials_dict = generate_materials()
+    generate_segments(materials_dict, staves)
     prettify_score(staves)
 
     # Generating LilyPond file structure
