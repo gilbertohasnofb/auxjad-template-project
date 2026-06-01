@@ -30,5 +30,5 @@ def prettify_score(staves: list[abjad.Staff]) -> None:
     print()
 
     # <... code ...>
-    print("- Done")
+    print("* Done")
     print()

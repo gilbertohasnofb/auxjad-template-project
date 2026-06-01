@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 
 import abjad
 
@@ -26,36 +26,30 @@ def compile_ly_file(
     # reading config.toml file
     config_dict = load_config()
 
-    # filename
-    OUTPUT_FILENAME = config_dict["filename"]["output_filename"]
+    # filename and directories
+    OUTPUT_FILENAME = config_dict["filename"]["output_filename"].replace(" ", "_")
+    BUILD_DIR = Path("build")
+    INCLUDES_DIR = BUILD_DIR / "includes"
+    OUTPUT_PATH = BUILD_DIR / f"{OUTPUT_FILENAME}.pdf"
 
     # creating build directory
-    print("- Creating directory ./build")
-    try:
-        os.mkdir("./build")
-    except FileExistsError:
-        print("- Directory ./build already exists")
-    print()
+    print(f"* Creating directory ./{BUILD_DIR}")
+    BUILD_DIR.mkdir(exist_ok=True)
 
     # copying .ily files to build directory
-    print("- Creating directory ./build/includes")
-    try:
-        os.mkdir("./build/includes")
-    except FileExistsError:
-        print("- Directory ./build/includes already exists")
-        print()
-    finally:
-        stylesheet_generator()
+    print(f"* Creating directory ./{INCLUDES_DIR}")
+    INCLUDES_DIR.mkdir(exist_ok=True)
+    print()
+
+    # generate style sheet
+    stylesheet_generator()
 
     # generating files
-    abjad.persist.as_pdf(
-        lilypond_file,
-        f"./build/{OUTPUT_FILENAME}.pdf",
-    )
+    abjad.persist.as_pdf(lilypond_file, OUTPUT_PATH)
 
     # confirm build successful
-    if os.path.exists(f"./build/{OUTPUT_FILENAME}.pdf"):
-        print("Success")
+    if OUTPUT_PATH.exists():
+        print(f"Success! Score created as ./{OUTPUT_PATH}")
     else:
-        print("Something went wrong, build was not successful")
+        print("Something went wrong, build was not successful...")
     print()

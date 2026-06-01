@@ -1,4 +1,5 @@
 import textwrap
+from pathlib import Path
 from typing import Any
 
 from ..utils import load_config
@@ -407,6 +408,11 @@ def stylesheet_generator() -> None:
     # reading config.toml file
     config_dict = load_config()
 
+    # path to stylesheet file
+    BUILD_DIR = Path("build")
+    INCLUDES_DIR = BUILD_DIR / "includes"
+    STYLESHEET_PATH = INCLUDES_DIR / "stylesheet.ily"
+
     generated_strings = (
         _generate_include_commands(config_dict),
         _generate_header_block(config_dict),
@@ -419,5 +425,5 @@ def stylesheet_generator() -> None:
 
     stylesheet_content = textwrap.dedent(stylesheet_content.strip())
 
-    with open("./build/includes/stylesheet.ily", "w+") as f:
+    with open(STYLESHEET_PATH, "w+") as f:
         f.writelines(stylesheet_content)

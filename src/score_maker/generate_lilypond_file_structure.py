@@ -1,4 +1,5 @@
 from collections import namedtuple
+from pathlib import Path
 
 import abjad
 
@@ -29,6 +30,10 @@ def generate_lilypond_file_structure(
     TEMPO_REFERENCE_NOTE = config_dict["tempo"].get("tempo_reference_note")
     TEMPO_VALUE = config_dict["tempo"].get("tempo_value")
 
+    # path to stylesheet file (relative from where the .ly file will be created)
+    INCLUDES_DIR = Path("includes")
+    STYLESHEET_PATH = INCLUDES_DIR / "stylesheet.ily"
+
     # creating score and appending instruments
     score = abjad.Score()
     for instrument in instrument_properties:
@@ -45,10 +50,10 @@ def generate_lilypond_file_structure(
     score_block.items.append(midi_block)
     lilypond_file = abjad.LilyPondFile(
         items=[score_block],
-        includes=["./includes/stylesheet.ily"],
+        includes=[STYLESHEET_PATH],
     )
 
-    print("- LilyPondFile successfully generated")
+    print("* LilyPondFile successfully generated")
     print()
 
     return lilypond_file, score

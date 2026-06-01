@@ -1,5 +1,5 @@
 [filename]
-    output_filename = "title"
+    output_filename = "my_composition"  # note, filename should not contain spaces
 
 [include]
     filenames = ["articulate.ly"]

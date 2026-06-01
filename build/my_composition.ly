@@ -3,7 +3,7 @@
 %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
 %! abjad.LilyPondFile._get_formatted_includes()
-\include "./includes/stylesheet.ily"
+\include "includes/stylesheet.ily"
 
 %! abjad.LilyPondFile._get_formatted_blocks()
 \score
