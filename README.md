@@ -25,7 +25,7 @@ Setup project in `src/config/config.toml`. Options include:
 * Python 3.12
 * LilyPond 2.24
 * Abjad 3.4
-* Auxjad 1.0.9
+* Auxjad 1.0.10
 
 **Notes**:
 * This repository is a template for projects using Auxjad and Abjad.

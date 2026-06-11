@@ -1,3 +1,3 @@
 abjad==3.4
-auxjad==1.0.9
+auxjad==1.0.10
 tqdm==4.67.1
