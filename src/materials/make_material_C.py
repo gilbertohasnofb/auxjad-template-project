@@ -7,18 +7,18 @@ from .material_C_definitions import RANDOM_SEED
 
 def make_material_C() -> list[abjad.Staff]:
     r"""
-    Generates material for Segment C
+    Generates Material C for Segment #3.
 
     Args:
         None
 
     Returns:
-        ``list`` of ``abjad.Staff``.
+        list[abjad.Staff]: List of staves, each with their respective materials.
     """
     if RANDOM_SEED:
         random.seed(RANDOM_SEED)
 
-    material_C = [
+    material = [
         abjad.Staff([abjad.Note(random.randint(24, 36), (1, 4)) for _ in range(6)]),
         abjad.Staff([abjad.Note(random.randint(24, 36), (1, 4)) for _ in range(6)]),
         abjad.Staff([abjad.Rest("r4") for _ in range(6)]),
@@ -28,4 +28,4 @@ def make_material_C() -> list[abjad.Staff]:
         abjad.Staff([abjad.Note(random.randint(-24, -12), (3, 2)) for _ in range(1)]),
     ]
 
-    return material_C
+    return material

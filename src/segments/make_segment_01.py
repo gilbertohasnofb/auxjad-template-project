@@ -15,22 +15,22 @@ from .segment_01_definitions import (
 
 def make_segment_01(
     materials_dict: dict[str, abjad.Container],
-) -> list[abjad.Selection]:
+) -> list[abjad.Staff]:
     r"""
-    Makes segment #01.
+    Makes Segment #01.
 
     Args:
-        materials_dict: ``dict`` with all materials organised by key, value pairs, with keys as
-            ``str`` representing the name of the material and values as ``abjad.Container``
-            containing the respective material's music.
+        materials_dict (dict): All materials organised by key, value pairs, with keys as ``str``
+            representing the name of the material and values as ``abjad.Container`` containing the
+            respective material's music.
 
     Returns:
-        ``list`` of ``abjad.Selection``'s.
+        list[abjad.Staff]: list of staves for the full segment.
     """
     if RANDOM_SEED:
         random.seed(RANDOM_SEED)
 
-    segment_01_music = []
+    output_staves = []
     for staff_material in materials_dict[SEGMENT_MATERIAL]:
         looper = auxjad.WindowLooper(
             staff_material,
@@ -43,6 +43,6 @@ def make_segment_01(
                 abjad.BarLine("||"),
                 abjad.select(staff_music).leaf(-1),
             )
-        segment_01_music.append(staff_music)
+        output_staves.append(staff_music)
 
-    return segment_01_music
+    return output_staves

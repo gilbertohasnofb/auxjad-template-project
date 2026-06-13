@@ -14,7 +14,9 @@ def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
         None
 
     Returns:
-        ``Tuple`` containing ``list`` of ``abjad.Staff``'s and ``list`` of ``namedtuple``'s.
+        tuple[list[abjad.Staff], list[namedtuple]]: A ``tuple`` with two elements, 1) all staves
+            (as ``list`` of ``abjad.Staff``'s) and 2) all instrument propertuies (as a ``list`` of
+            ``namedtuple``'s).
     """
     # reading config.toml file
     config_dict = load_config()

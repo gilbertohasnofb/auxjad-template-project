@@ -12,7 +12,8 @@ def generate_materials() -> dict[str, abjad.Container]:
         None
 
     Returns:
-        ``dict`` with ``str`` (material name) and ``abjad.Container`` (raw material).
+        dict[str, abjad.Container]: A dictionary with material names as keys and ``abjad.Container``
+            with raw materials as values.
     """
     print("Generating musical materials")
     print("---------------------------")

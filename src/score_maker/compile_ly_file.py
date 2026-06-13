@@ -14,7 +14,8 @@ def compile_ly_file(
         etc.).
 
     Args:
-        lilypond_file: ``abjad.LilyPondFile`` created by ``generate_lilypond_file_structure()``.
+        lilypond_file (abjad.LilyPondFile): ``abjad.LilyPondFile`` created by
+            ``generate_lilypond_file_structure()``.
 
     Returns:
         None

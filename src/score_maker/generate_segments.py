@@ -12,9 +12,9 @@ def generate_segments(
     Generates musical materials from segments and adds them to the staves.
 
     Args:
-        materials_dict: ``dict`` containing names of materials as ``str`` and the materials
-            themselves as ``abjad.Container``.
-        staves: ``list`` of ``abjad.Staff``'s.
+        materials_dict (dict[str, abjad.Container]): A ``dict`` containing names of materials as
+            ``str`` and the materials themselves as ``abjad.Container``.
+        staves (list[abjad.Staff]): A ``list`` of ``abjad.Staff``'s in which material will be added.
 
     Returns:
         None

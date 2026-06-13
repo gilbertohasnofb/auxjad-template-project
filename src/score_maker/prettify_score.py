@@ -8,7 +8,7 @@ def prettify_score(staves: list[abjad.Staff]) -> None:
     Prettifies score (e.g. remove repeated time signatures, repeated dynamics, etc.)
 
     Args:
-        staves: ``list`` of ``abjad.Staff``'s.
+        staves (list[abjad.Staff]): A ``list`` of ``abjad.Staff``'s to be modified.
 
     Returns:
         None
