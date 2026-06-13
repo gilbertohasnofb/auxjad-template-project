@@ -43,8 +43,8 @@ def score_maker():
     # Adding indicators and other text
     add_instrument_names(instrument_properties)
     add_initial_clefs(instrument_properties)
-    add_tempo_and_final_tweaks(staves, score)
-    add_large_time_signatures(staves, score)
+    add_tempo_and_final_tweaks(score)
+    add_large_time_signatures(score)
 
     # Outputting score
     compile_ly_file(lilypond_file)

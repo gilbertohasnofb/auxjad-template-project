@@ -3,7 +3,6 @@ import auxjad
 
 
 def add_large_time_signatures(
-    staves: list[abjad.Staff],
     score: abjad.Score,
 ) -> None:
     r"""
@@ -12,15 +11,14 @@ def add_large_time_signatures(
         ``config.toml`` must be set to ``true`` for this function to work.
 
     Args:
-        staves: ``list`` of ``abjad.Staff``'s.
-        score: ``abjad.Score`` created by ``generate_lilypond_file_structure()``.
+        score (abjad.Score): ``abjad.Score`` created by ``generate_lilypond_file_structure()``.
 
     Returns:
         None
     """
     time_sig_staff = abjad.Staff(lilypond_type="TimeSig")
     time_signatures = auxjad.get.time_signature_list(
-        staves[0],
+        score[0],
         do_not_use_none=True,
     )
     previous_time_signature = None
