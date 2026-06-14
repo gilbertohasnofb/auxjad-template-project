@@ -1,6 +1,8 @@
 import abjad
 import auxjad
 
+from ..utils import load_config
+
 
 def add_large_time_signatures(
     score: abjad.Score,
@@ -16,6 +18,11 @@ def add_large_time_signatures(
     Returns:
         None
     """
+    config_dict = load_config()
+    large_time_signatures = config_dict["layout"].get("large_time_signatures", False)
+    if not large_time_signatures:
+        return
+
     time_sig_staff = abjad.Staff(lilypond_type="TimeSig")
     time_signatures = auxjad.get.time_signature_list(
         score[0],
