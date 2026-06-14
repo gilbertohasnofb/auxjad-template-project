@@ -15,7 +15,7 @@ def add_tempo_and_final_tweaks(
     """
     # tempo markup (defined as a LilyPond variable in stylesheet)
     tempo_markup = abjad.LilyPondLiteral(r"\tempo-markup")
-    for staff in score:
+    for staff in abjad.iterate(score).components(abjad.Staff):
         abjad.attach(tempo_markup, abjad.select(staff).leaf(0))
 
     # adding pedal marks and initial dynamics

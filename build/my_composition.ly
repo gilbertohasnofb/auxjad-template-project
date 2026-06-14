@@ -161,6 +161,7 @@
             {
                 \time 3/4
                 \clef "treble"
+                \tempo-markup
                 af'2
                 g'4
                 af'4
@@ -187,6 +188,7 @@
             {
                 \time 3/4
                 \clef "bass"
+                \tempo-markup
                 a2
                 fs4
                 a4
@@ -256,6 +258,7 @@
             {
                 \time 3/4
                 \clef "bass"
+                \tempo-markup
                 ef2
                 f4
                 ef4
