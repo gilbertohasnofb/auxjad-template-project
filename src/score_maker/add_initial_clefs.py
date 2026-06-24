@@ -22,12 +22,14 @@ def add_initial_clefs(instrument_properties: list[namedtuple]) -> None:
             continue
         elif isinstance(instrument.initial_clef, list):
             for staff, clef in zip(instrument.container, instrument.initial_clef):
-                abjad.attach(
-                    abjad.Clef(clef),
-                    abjad.select(staff).leaf(0),
-                )
+                if isinstance(clef, str):
+                    abjad.attach(
+                        abjad.Clef(clef),
+                        abjad.select(staff).leaf(0),
+                    )
         else:
-            abjad.attach(
-                abjad.Clef(instrument.initial_clef),
-                abjad.select(instrument.container).leaf(0),
-            )
+            if isinstance(instrument.initial_clef, str):
+                abjad.attach(
+                    abjad.Clef(instrument.initial_clef),
+                    abjad.select(instrument.container).leaf(0),
+                )

@@ -1,8 +1,43 @@
 from collections import namedtuple
+from typing import Any
 
 import abjad
 
 from ..utils import load_config
+
+
+def _nullify_list(property: list[Any], default_value: Any = None) -> list[Any]:
+    r"""
+    Creates list with the same structure as an input list. Used to take the staff_names property
+        from config.toml and create a similar structure with default_values for missing properties.
+
+    Args:
+        property (list[Any]): Reference list to be nullified.
+        default_value (Any): Default value in the output list, defaults to ``None``.
+
+    Returns:
+        list[Any]: Output list with identical structure to input ``property`` but with nullified
+            values.
+
+    Example:
+        >>> staff_names = [
+        ...     "Flute",
+        ...     ["Piano_Upper", "Piano_Middle", "Piano_Lower"],
+        ...     ["Harp_Upper", "Harp_Lower"],
+        ...     "Cello",
+        ... ]
+        >>> _nullify_list(staff_names)
+        [
+            None,
+            [None, None, None],
+            [None, None],
+            None,
+        ]
+    """
+    output_list = []
+    for value in property:
+        output_list.append(default_value if not isinstance(value, list) else _nullify_list(value))
+    return output_list
 
 
 def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
@@ -25,7 +60,10 @@ def create_staves() -> tuple[list[abjad.Staff], list[namedtuple]]:
     CONTEXTS = config_dict["instrumentation"]["contexts"]
     INSTRUMENT_NAMES = config_dict["instrumentation"]["instrument_names"]
     SHORT_INSTRUMENT_NAMES = config_dict["instrumentation"]["short_instrument_names"]
-    INITIAL_CLEFS = config_dict["instrumentation"]["initial_clefs"]
+    try:
+        INITIAL_CLEFS = config_dict["instrumentation"]["initial_clefs"]
+    except KeyError:
+        INITIAL_CLEFS = _nullify_list(STAFF_NAMES, None)
 
     # Defining named tuple
     InstrumentProperties = namedtuple(
