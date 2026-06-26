@@ -280,6 +280,11 @@ def _generate_layout_block(config_dict: dict) -> str:
     output_string += "    \\override Staff.DynamicText.extra-spacing-width = #'(-0.5 . 0.5)\n"
     output_string += "    \\override Staff.Hairpin.minimum-length = #10\n"
     output_string += "\n"
+    output_string += "    % longer laissez vibrer\n"
+    output_string += "    \\override LaissezVibrerTie.X-extent = #'(0 . 0)\n"
+    output_string += "    \\override LaissezVibrerTie.details.note-head-gap = #-1.2\n"
+    output_string += "    \\override LaissezVibrerTie.extra-offset = #'(1.2 . 0)\n"
+    output_string += "\n"
     output_string += "    % customising tuplets\n"
     output_string += "    \\override TupletBracket.outside-staff-priority = 1000\n"
     output_string += (
