@@ -1,8 +1,10 @@
 from ..utils import load_config
+from .add_final_bar_line import add_final_bar_line
 from .add_initial_clefs import add_initial_clefs
+from .add_initial_tempo import add_initial_tempo
 from .add_instrument_names import add_instrument_names
 from .add_large_time_signatures import add_large_time_signatures
-from .add_tempo_and_final_tweaks import add_tempo_and_final_tweaks
+from .add_misc_tweaks import add_misc_tweaks
 from .compile_ly_file import compile_ly_file
 from .create_staves import create_staves
 from .generate_lilypond_file_structure import generate_lilypond_file_structure
@@ -43,8 +45,10 @@ def score_maker():
     # Adding indicators and other text
     add_instrument_names(instrument_properties)
     add_initial_clefs(instrument_properties)
-    add_tempo_and_final_tweaks(score)
+    add_initial_tempo(score)
     add_large_time_signatures(score)
+    add_misc_tweaks(score)
+    add_final_bar_line(score)
 
     # Outputting score
     compile_ly_file(lilypond_file)

@@ -50,18 +50,6 @@
     large_time_signatures = true
 
 [instrumentation]
-    staff_names = [
-        "Flute",
-        ["Piano_Upper", "Piano_Middle", "Piano_Lower"],
-        ["Harp_Upper", "Harp_Lower"],
-        "Cello",
-    ]
-    contexts = [
-        "Staff",
-        "GrandStaff",  # not PianoStaff so that hide_empty_staves can work for this instrument
-        "GrandStaff",
-        "Staff",
-    ]
     instrument_names = [
         "Flute",
         "Piano",
@@ -73,6 +61,18 @@
         "Pno",
         "Hp.",
         "Vcl.",
+    ]
+    contexts = [
+        "Staff",
+        "GrandStaff",  # not PianoStaff so that hide_empty_staves can work for this instrument
+        "GrandStaff",
+        "Staff",
+    ]
+    staff_names = [
+        "Flute",
+        ["Piano_Upper", "Piano_Middle", "Piano_Lower"],
+        ["Harp_Upper", "Harp_Lower"],
+        "Cello",
     ]
     initial_clefs = [
         "treble",

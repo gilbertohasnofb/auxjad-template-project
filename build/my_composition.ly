@@ -28,6 +28,7 @@
             r1
             r1
             r1
+            \bar "|."
         }
         \context Staff = "Flute"
         {
@@ -189,7 +190,20 @@
                 \time 3/4
                 \clef "bass"
                 \tempo-markup
+                \once \override Staff.SustainPedal.stencil =
+                    #(lambda (grob) (grob-interpret-markup grob
+                        #{
+                            \markup {
+                                \larger "½"
+                                \concat {
+                                    \musicglyph "pedal.Ped"
+                                    \musicglyph "pedal.."
+                                }
+                                \raise #-0.3 "→"
+                            }
+                        #}))
                 a2
+                \sustainOn
                 fs4
                 a4
                 fs2
@@ -215,6 +229,7 @@
                 r1
                 r1
                 r1
+                \sustainOff
                 \bar "|."
             }
         >>
