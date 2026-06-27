@@ -16,7 +16,7 @@ def generate_materials() -> dict[str, abjad.Container]:
             with raw materials as values.
     """
     print("Generating musical materials")
-    print("---------------------------")
+    print("----------------------------")
     print()
     materials_dict = {}
     with tqdm(total=len(list_of_material_makers)) as pbar:
