@@ -1,4 +1,4 @@
-from ..utils import load_config
+from .load_config import load_config
 
 
 def print_header() -> None:

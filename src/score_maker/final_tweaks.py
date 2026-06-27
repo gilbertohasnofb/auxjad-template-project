@@ -2,12 +2,7 @@ from collections import namedtuple
 
 import abjad
 
-from .add_final_bar_line import add_final_bar_line as add_final_bar_line_func
-from .add_initial_clefs import add_initial_clefs as add_initial_clefs_func
-from .add_initial_tempo import add_initial_tempo as add_initial_tempo_func
-from .add_instrument_names import add_instrument_names as add_instrument_names_func
-from .add_large_time_signatures import add_large_time_signatures as add_large_time_signatures_func
-from .add_miscellaneous_tweaks import add_miscellaneous_tweaks as add_miscellaneous_tweaks_func
+from .. import utils
 
 
 def final_tweaks(
@@ -47,15 +42,15 @@ def final_tweaks(
     print()
 
     if add_instrument_names:
-        add_instrument_names_func(instrument_properties)
+        utils.add_instrument_names(instrument_properties)
     if add_initial_clefs:
-        add_initial_clefs_func(instrument_properties)
+        utils.add_initial_clefs(instrument_properties)
     if add_initial_tempo:
-        add_initial_tempo_func(score)
+        utils.add_initial_tempo(score)
     if add_large_time_signatures:
-        add_large_time_signatures_func(score)
+        utils.add_large_time_signatures(score)
     if add_final_bar_line:
-        add_final_bar_line_func(score)
+        utils.add_final_bar_line(score)
     if add_miscellaneous_tweaks:
-        add_miscellaneous_tweaks_func(score)
+        utils.add_miscellaneous_tweaks(score)
     print()
