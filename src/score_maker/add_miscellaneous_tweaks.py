@@ -1,11 +1,11 @@
 import abjad
 
 
-def add_misc_tweaks(
+def add_miscellaneous_tweaks(
     score: abjad.Score,
 ) -> None:
     r"""
-    Adds miscelaneous tweaks to the staves.
+    Adds miscellaneous tweaks to the staves.
 
     Args:
         score (abjad.Score): ``abjad.Score`` created by ``generate_lilypond_file_structure()``.
@@ -13,11 +13,15 @@ def add_misc_tweaks(
     Returns:
         None
     """
+    print("* Miscellaneous tweaks:", end=" ")
+
     # adding pedal marks to lower piano staff
-    lowest_piano_staff = score["Piano"]["Piano_Lower"]
+    lower_piano_staff = score["Piano"]["Piano_Lower"]
     abjad.piano_pedal(
-        lowest_piano_staff[:],
+        abjad.select(lower_piano_staff).leaves(),
         half_pedal=True,
         until_the_end=True,
         omit_raise_pedal_glyph=True,
     )
+
+    print("Done")

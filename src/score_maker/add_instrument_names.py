@@ -16,6 +16,8 @@ def add_instrument_names(instrument_properties: list[namedtuple]) -> None:
     Returns:
         None
     """
+    print("* Adding Instrument Names:", end=" ")
+
     for instrument in instrument_properties:
         if instrument.instrument_name != "":
             # for better spacing, adding whitespace to end of instrument name
@@ -48,3 +50,5 @@ def add_instrument_names(instrument_properties: list[namedtuple]) -> None:
                 short_instrument_name_markup,
                 abjad.select(instrument.container).leaf(0),
             )
+
+    print("Done")

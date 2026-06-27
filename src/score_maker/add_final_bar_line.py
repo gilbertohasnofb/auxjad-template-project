@@ -13,5 +13,8 @@ def add_final_bar_line(
     Returns:
         None
     """
-    # adding final bar
+    print("* Adding Final Bar Line:", end=" ")
+
     score.add_final_bar_line()
+
+    print("Done")

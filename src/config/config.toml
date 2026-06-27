@@ -9,6 +9,7 @@
     subtitle = "subtitle"
     composer = "composer"
     dedication = "dedication"
+    year = 2026  # used only for terminal printouts, not in final score
     poet = "Score in C"
     fontsize = 1.5
 

@@ -13,7 +13,11 @@ def add_initial_tempo(
     Returns:
         None
     """
+    print("* Adding Initial Tempo:", end=" ")
+
     # tempo markup (defined as a LilyPond variable in stylesheet)
     tempo_markup = abjad.LilyPondLiteral(r"\tempo-markup")
     for staff in abjad.iterate(score).components(abjad.Staff):
         abjad.attach(tempo_markup, abjad.select(staff).leaf(0))
+
+    print("Done")

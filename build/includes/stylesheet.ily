@@ -104,6 +104,10 @@
     \override Staff.DynamicText.extra-spacing-width = #'(-0.5 . 0.5)
     \override Staff.Hairpin.minimum-length = #10
 
+    % longer laissez vibrer
+    \override LaissezVibrerTie.details.note-head-gap = #-1.2
+    \override LaissezVibrerTie.extra-offset = #'(1.2 . 0)
+
     % customising tuplets
     \override TupletBracket.outside-staff-priority = 1000
     \override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods

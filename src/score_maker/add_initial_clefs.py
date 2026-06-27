@@ -17,6 +17,8 @@ def add_initial_clefs(instrument_properties: list[namedtuple]) -> None:
     Returns:
         None
     """
+    print("* Adding Initial Clefs:", end=" ")
+
     for instrument in instrument_properties:
         if instrument.initial_clef is None:
             continue
@@ -33,3 +35,5 @@ def add_initial_clefs(instrument_properties: list[namedtuple]) -> None:
                     abjad.Clef(instrument.initial_clef),
                     abjad.select(instrument.container).leaf(0),
                 )
+
+    print("Done")

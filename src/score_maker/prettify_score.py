@@ -19,16 +19,12 @@ def prettify_score(staves: list[abjad.Staff]) -> None:
 
     with tqdm(total=len(staves)) as pbar:
         for staff in staves:
-            auxjad.mutate.remove_repeated_time_signatures(staff[:])
-            auxjad.mutate.remove_repeated_dynamics(staff[:])
+            leaves = abjad.select(staff).leaves()
+            auxjad.mutate.remove_repeated_time_signatures(leaves)
+            auxjad.mutate.remove_repeated_dynamics(leaves)
+            auxjad.mutate.reposition_clefs(leaves)
             pbar.update(1)
     print()
 
-    # manual fixes
-    print("Manual fixes")
-    print("------------")
-    print()
-
-    # <... code ...>
     print("* Done")
     print()

@@ -18,6 +18,8 @@ def add_large_time_signatures(
     Returns:
         None
     """
+    print("* Adding Large Time Signatures:", end=" ")
+
     config_dict = load_config()
     large_time_signatures = config_dict["layout"].get("large_time_signatures", False)
     if not large_time_signatures:
@@ -36,3 +38,5 @@ def add_large_time_signatures(
         time_sig_staff.append(rests)
         previous_time_signature = time_signature
     score.insert(0, time_sig_staff)
+
+    print("Done")

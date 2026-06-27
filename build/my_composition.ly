@@ -228,6 +228,7 @@
                 r1
                 r1
                 r1
+                \once \override Staff.SustainPedal.stencil = ##f
                 r1
                 \sustainOff
                 \bar "|."
