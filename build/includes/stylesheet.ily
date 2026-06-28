@@ -93,9 +93,6 @@
     \override Hairpin.after-line-breaking = ##t
 
     % horizontal spacing
-    \set Timing.beamExceptions = #'()
-    \set Timing.beatStructure = 1, 1, 1, 1
-    \set Timing.baseMoment = #(ly:make-moment 1/4)
     \override Score.SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/32)
 
     % spanners

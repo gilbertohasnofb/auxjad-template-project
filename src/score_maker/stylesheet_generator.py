@@ -197,9 +197,9 @@ def _generate_layout_block(config_dict: dict) -> str:
         "flag_style",
         "hide_empty_staves",
         "grand_staff_brace_collapse_height",
-        "timing_base_moment",
         "base_shortest_duration",
         "horizontal_tuplets",
+        "full_length_tuplets",
         "large_time_signatures",
     ]
     values = _fetch_values_from_config_dict(config_dict, block="layout", keys=keys)
@@ -211,9 +211,9 @@ def _generate_layout_block(config_dict: dict) -> str:
         FLAG_STYLE,
         HIDE_EMPTY_STAVES,
         GRAND_STAFF_BRACE_COLLAPSE_HEIGHT,
-        TIMING_BASE_MOMENT,
         BASE_SHORTEST_DURATION,
         HORIZONTAL_TUPLETS,
+        FULL_LENGTH_TUPLETS,
         LARGE_TIME_SIGNATURES,
     ) = values
 
@@ -263,13 +263,9 @@ def _generate_layout_block(config_dict: dict) -> str:
     output_string += "    \\override Hairpin.to-barline = ##f\n"
     output_string += "    \\override Hairpin.after-line-breaking = ##t\n"
     output_string += "\n"
-    output_string += "    % horizontal spacing\n"
-    output_string += "    \\set Timing.beamExceptions = #'()\n"
-    output_string += "    \\set Timing.beatStructure = 1, 1, 1, 1\n"
 
-    if TIMING_BASE_MOMENT is not None:
-        output_string += f"    \\set Timing.baseMoment = #(ly:make-moment {TIMING_BASE_MOMENT})\n"
     if BASE_SHORTEST_DURATION is not None:
+        output_string += "    % horizontal spacing\n"
         output_string += "    \\override Score.SpacingSpanner.base-shortest-duration = "
         output_string += f"#(ly:make-moment {BASE_SHORTEST_DURATION})\n"
 
@@ -307,6 +303,8 @@ def _generate_layout_block(config_dict: dict) -> str:
         output_string += "        (ly:grob-set-property! grob 'positions (cons new-pos new-pos))\n"
         output_string += "        (ly:tuplet-bracket::print grob)))\n"
         output_string += "\n"
+
+    if FULL_LENGTH_TUPLETS is not None:
         output_string += "    % full length tuplets\n"
         output_string += "    \\context {\n"
         output_string += "        \\Score\n"
