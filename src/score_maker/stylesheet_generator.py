@@ -194,6 +194,7 @@ def _generate_paper_block(config_dict: dict) -> str:
 def _generate_layout_block(config_dict: dict) -> str:
     keys = [
         "accidental_style",
+        "disable_auto_beam_gap",
         "flag_style",
         "hide_empty_staves",
         "grand_staff_brace_collapse_height",
@@ -201,6 +202,9 @@ def _generate_layout_block(config_dict: dict) -> str:
         "empty_beam_exceptions",
         "horizontal_tuplets",
         "full_length_tuplets",
+        "tuplet_outside_staff_priority",
+        "tuplet_minimum_length",
+        "tuplet_fraction_text",
         "large_time_signatures",
     ]
     values = _fetch_values_from_config_dict(config_dict, block="layout", keys=keys)
@@ -209,6 +213,7 @@ def _generate_layout_block(config_dict: dict) -> str:
 
     (
         ACCIDENTAL_STYLE,
+        DISABLE_AUTO_BEAM_GAP,
         FLAG_STYLE,
         HIDE_EMPTY_STAVES,
         GRAND_STAFF_BRACE_COLLAPSE_HEIGHT,
@@ -216,6 +221,9 @@ def _generate_layout_block(config_dict: dict) -> str:
         EMPTY_BEAM_EXCEPTIONS,
         HORIZONTAL_TUPLETS,
         FULL_LENGTH_TUPLETS,
+        TUPLET_OUTSIDE_STAFF_PRIORITY,
+        TUPLET_MINIMUM_LENGTH,
+        TUPLET_FRACTION_TEXT,
         LARGE_TIME_SIGNATURES,
     ) = values
 
@@ -255,7 +263,8 @@ def _generate_layout_block(config_dict: dict) -> str:
     output_string += "    \\override Staff.TimeSignature.whiteout = ##t\n"
     output_string += "\n"
     output_string += "    % beam and steam preferences\n"
-    output_string += "    \\override Staff.Beam.auto-knee-gap = ##f\n"
+    if DISABLE_AUTO_BEAM_GAP:
+        output_string += "    \\override Staff.Beam.auto-knee-gap = ##f\n"
     output_string += "    \\override Beam.concaveness = #+inf.0\n"
     output_string += "    \\override Stem.details.lengths = #'(3.5 3.5 3.5 4.5 5.0 6.0)\n"
     output_string += "    \\override Stem.details.beamed-lengths = #'(4)\n"
@@ -282,14 +291,30 @@ def _generate_layout_block(config_dict: dict) -> str:
     output_string += "    \\override LaissezVibrerTie.details.note-head-gap = #-1.2\n"
     output_string += "    \\override LaissezVibrerTie.extra-offset = #'(1.2 . 0)\n"
     output_string += "\n"
-    output_string += "    % customising tuplets\n"
-    output_string += "    \\override TupletBracket.outside-staff-priority = 1000\n"
-    output_string += (
-        "    \\override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods\n"
-    )
-    output_string += "    \\override TupletBracket.minimum-length = #8\n"
-    output_string += "    \\override TupletNumber.text = #tuplet-number::calc-fraction-text\n"
-    output_string += "\n"
+
+    if (
+        TUPLET_OUTSIDE_STAFF_PRIORITY is not None
+        or TUPLET_MINIMUM_LENGTH is not None
+        or TUPLET_FRACTION_TEXT
+    ):
+        output_string += "    % customising tuplets\n"
+    if TUPLET_OUTSIDE_STAFF_PRIORITY is not None:
+        output_string += "    \\override TupletBracket.outside-staff-priority = "
+        output_string += f"{TUPLET_OUTSIDE_STAFF_PRIORITY}\n"
+    if TUPLET_MINIMUM_LENGTH is not None:
+        output_string += (
+            "    \\override TupletBracket.springs-and-rods = #ly:spanner::set-spacing-rods\n"
+        )
+        output_string += f"    \\override TupletBracket.minimum-length = #{TUPLET_MINIMUM_LENGTH}\n"
+    if TUPLET_FRACTION_TEXT:
+        output_string += "    \\override TupletNumber.text = #tuplet-number::calc-fraction-text\n"
+    if (
+        TUPLET_OUTSIDE_STAFF_PRIORITY is not None
+        or TUPLET_MINIMUM_LENGTH is not None
+        or TUPLET_FRACTION_TEXT
+    ):
+        output_string += "\n"
+
     output_string += "    % curly braces should be displayed even when a single staff is shown\n"
     output_string += "    \\override GrandStaff.SystemStartBrace.collapse-height = #4\n"
 

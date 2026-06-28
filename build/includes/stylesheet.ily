@@ -82,7 +82,6 @@
     \override Staff.TimeSignature.whiteout = ##t
 
     % beam and steam preferences
-    \override Staff.Beam.auto-knee-gap = ##f
     \override Beam.concaveness = #+inf.0
     \override Stem.details.lengths = #'(3.5 3.5 3.5 4.5 5.0 6.0)
     \override Stem.details.beamed-lengths = #'(4)
@@ -113,6 +112,11 @@
 
     % curly braces should be displayed even when a single staff is shown
     \override GrandStaff.SystemStartBrace.collapse-height = #4
+    % setting empty beam exceptions to all staves in the score
+    \context {
+        \Staff
+        beamExceptions = #'()
+    }
     % horizontal tuplets
     \override TupletBracket.stencil =
     #(lambda (grob)

@@ -49,6 +49,9 @@
     empty_beam_exceptions = true
     horizontal_tuplets = true
     full_length_tuplets = true
+    tuplet_fraction_text = true
+    tuplet_minimum_length = 8
+    tuplet_outside_staff_priority = 1000
     large_time_signatures = true
 
 [instrumentation]
