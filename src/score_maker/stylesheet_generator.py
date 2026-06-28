@@ -198,6 +198,7 @@ def _generate_layout_block(config_dict: dict) -> str:
         "hide_empty_staves",
         "grand_staff_brace_collapse_height",
         "base_shortest_duration",
+        "empty_beam_exceptions",
         "horizontal_tuplets",
         "full_length_tuplets",
         "large_time_signatures",
@@ -212,6 +213,7 @@ def _generate_layout_block(config_dict: dict) -> str:
         HIDE_EMPTY_STAVES,
         GRAND_STAFF_BRACE_COLLAPSE_HEIGHT,
         BASE_SHORTEST_DURATION,
+        EMPTY_BEAM_EXCEPTIONS,
         HORIZONTAL_TUPLETS,
         FULL_LENGTH_TUPLETS,
         LARGE_TIME_SIGNATURES,
@@ -290,6 +292,13 @@ def _generate_layout_block(config_dict: dict) -> str:
     output_string += "\n"
     output_string += "    % curly braces should be displayed even when a single staff is shown\n"
     output_string += "    \\override GrandStaff.SystemStartBrace.collapse-height = #4\n"
+
+    if EMPTY_BEAM_EXCEPTIONS is not None:
+        output_string += "    % setting empty beam exceptions to all staves in the score\n"
+        output_string += "    \\context {\n"
+        output_string += "        \\Staff\n"
+        output_string += "        beamExceptions = #'()\n"
+        output_string += "    }\n"
 
     if HORIZONTAL_TUPLETS is not None:
         output_string += "    % horizontal tuplets\n"

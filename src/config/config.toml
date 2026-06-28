@@ -46,6 +46,7 @@
     hide_empty_staves = true
     grand_staff_brace_collapse_height = 4
     base_shortest_duration = "1/32"
+    empty_beam_exceptions = true
     horizontal_tuplets = true
     full_length_tuplets = true
     large_time_signatures = true
