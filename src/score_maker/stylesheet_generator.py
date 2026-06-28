@@ -293,14 +293,14 @@ def _generate_layout_block(config_dict: dict) -> str:
     output_string += "    % curly braces should be displayed even when a single staff is shown\n"
     output_string += "    \\override GrandStaff.SystemStartBrace.collapse-height = #4\n"
 
-    if EMPTY_BEAM_EXCEPTIONS is not None:
+    if EMPTY_BEAM_EXCEPTIONS:
         output_string += "    % setting empty beam exceptions to all staves in the score\n"
         output_string += "    \\context {\n"
         output_string += "        \\Staff\n"
         output_string += "        beamExceptions = #'()\n"
         output_string += "    }\n"
 
-    if HORIZONTAL_TUPLETS is not None:
+    if HORIZONTAL_TUPLETS:
         output_string += "    % horizontal tuplets\n"
         output_string += "    \\override TupletBracket.stencil =\n"
         output_string += "    #(lambda (grob)\n"
@@ -313,7 +313,7 @@ def _generate_layout_block(config_dict: dict) -> str:
         output_string += "        (ly:tuplet-bracket::print grob)))\n"
         output_string += "\n"
 
-    if FULL_LENGTH_TUPLETS is not None:
+    if FULL_LENGTH_TUPLETS:
         output_string += "    % full length tuplets\n"
         output_string += "    \\context {\n"
         output_string += "        \\Score\n"
